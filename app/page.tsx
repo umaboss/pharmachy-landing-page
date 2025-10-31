@@ -22,6 +22,10 @@ export const metadata: Metadata = {
     'cloud-based solution',
     'unified platform'
   ],
+  authors: [{ name: 'Zapeera Team' }],
+  creator: 'Zapeera',
+  publisher: 'Zapeera',
+  metadataBase: new URL('https://zapeera.com'),
   openGraph: {
     title: 'Zapeera - Unified Business Management Solutions',
     description: 'Transform your business with Zapeera\'s comprehensive management platform. POS, inventory, staff management, and analytics - all in one solution.',
@@ -29,10 +33,11 @@ export const metadata: Metadata = {
     siteName: 'Zapeera',
     images: [
       {
-        url: '/og-home.jpg',
+        url: 'https://zapeera.com/og-home.jpg',
         width: 1200,
         height: 630,
         alt: 'Zapeera - Unified Business Management Solutions',
+        type: 'image/jpeg',
       },
     ],
     locale: 'en_US',
@@ -42,10 +47,22 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Zapeera - Unified Business Management Solutions',
     description: 'Transform your business with Zapeera\'s comprehensive management platform.',
-    images: ['/og-home.jpg'],
+    images: ['https://zapeera.com/og-home.jpg'],
+    creator: '@zapeera',
   },
   alternates: {
     canonical: 'https://zapeera.com',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 

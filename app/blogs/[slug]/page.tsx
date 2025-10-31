@@ -675,12 +675,25 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       'business software'
     ],
     authors: [{ name: post.author }],
+    creator: 'Zapeera',
+    publisher: 'Zapeera',
+    metadataBase: new URL('https://zapeera.com'),
     openGraph: {
       title: post.title,
       description: post.excerpt,
       url: `https://zapeera.com/blogs/${params.slug}`,
-      images: [post.image],
+      siteName: 'Zapeera',
+      images: [
+        {
+          url: post.image.startsWith('http') ? post.image : `https://zapeera.com${post.image}`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+          type: 'image/jpeg',
+        },
+      ],
       type: 'article',
+      locale: 'en_US',
       publishedTime: post.date,
       authors: [post.author],
       tags: post.tags,
@@ -689,10 +702,15 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: [post.image],
+      images: [post.image.startsWith('http') ? post.image : `https://zapeera.com${post.image}`],
+      creator: '@zapeera',
     },
     alternates: {
       canonical: `https://zapeera.com/blogs/${params.slug}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }

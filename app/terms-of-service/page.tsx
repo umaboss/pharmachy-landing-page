@@ -1,6 +1,54 @@
+import type { Metadata } from 'next';
 import Navigation from "@/app/components/Navigation";
 import Footer from "@/app/components/Footer";
 import Container from "@/app/components/ui/container";
+
+export const metadata: Metadata = {
+  title: 'Terms of Service - Zapeera',
+  description: 'Read Zapeera\'s Terms of Service. Understand the terms and conditions for using our business management software and services.',
+  keywords: [
+    'terms of service',
+    'terms and conditions',
+    'service agreement',
+    'user agreement',
+    'legal terms'
+  ],
+  authors: [{ name: 'Zapeera Team' }],
+  creator: 'Zapeera',
+  publisher: 'Zapeera',
+  metadataBase: new URL('https://zapeera.com'),
+  openGraph: {
+    title: 'Terms of Service - Zapeera',
+    description: 'Read Zapeera\'s Terms of Service and understand the terms for using our services.',
+    url: 'https://zapeera.com/terms-of-service',
+    siteName: 'Zapeera',
+    type: 'website',
+    locale: 'en_US',
+    images: [
+      {
+        url: 'https://zapeera.com/og-home.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Terms of Service - Zapeera',
+        type: 'image/jpeg',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Terms of Service - Zapeera',
+    description: 'Zapeera terms of service and user agreement.',
+    images: ['https://zapeera.com/og-home.jpg'],
+    creator: '@zapeera',
+  },
+  alternates: {
+    canonical: 'https://zapeera.com/terms-of-service',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function TermsOfServicePage() {
   return (

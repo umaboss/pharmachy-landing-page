@@ -1,6 +1,54 @@
+import type { Metadata } from 'next';
 import Navigation from "@/app/components/Navigation";
 import Footer from "@/app/components/Footer";
 import Container from "@/app/components/ui/container";
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy - Zapeera',
+  description: 'Zapeera Privacy Policy - Learn how we collect, use, and protect your personal information. Understand your privacy rights and data protection measures.',
+  keywords: [
+    'privacy policy',
+    'data protection',
+    'privacy rights',
+    'personal information',
+    'data security'
+  ],
+  authors: [{ name: 'Zapeera Team' }],
+  creator: 'Zapeera',
+  publisher: 'Zapeera',
+  metadataBase: new URL('https://zapeera.com'),
+  openGraph: {
+    title: 'Privacy Policy - Zapeera',
+    description: 'Learn how Zapeera collects, uses, and protects your personal information.',
+    url: 'https://zapeera.com/privacy-policy',
+    siteName: 'Zapeera',
+    type: 'website',
+    locale: 'en_US',
+    images: [
+      {
+        url: 'https://zapeera.com/og-home.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Privacy Policy - Zapeera',
+        type: 'image/jpeg',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy Policy - Zapeera',
+    description: 'Zapeera privacy policy and data protection.',
+    images: ['https://zapeera.com/og-home.jpg'],
+    creator: '@zapeera',
+  },
+  alternates: {
+    canonical: 'https://zapeera.com/privacy-policy',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function PrivacyPolicyPage() {
   return (

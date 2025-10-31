@@ -1,6 +1,53 @@
+import type { Metadata } from 'next';
 import Navigation from "@/app/components/Navigation";
 import Footer from "@/app/components/Footer";
 import Container from "@/app/components/ui/container";
+
+export const metadata: Metadata = {
+  title: 'Cookie Policy - Zapeera',
+  description: 'Learn about how Zapeera uses cookies to enhance your experience and protect your privacy. Understand our cookie policy and how to manage your preferences.',
+  keywords: [
+    'cookie policy',
+    'privacy cookies',
+    'website cookies',
+    'cookie management'
+  ],
+  authors: [{ name: 'Zapeera Team' }],
+  creator: 'Zapeera',
+  publisher: 'Zapeera',
+  metadataBase: new URL('https://zapeera.com'),
+  openGraph: {
+    title: 'Cookie Policy - Zapeera',
+    description: 'Learn about how Zapeera uses cookies to enhance your experience.',
+    url: 'https://zapeera.com/cookie-policy',
+    siteName: 'Zapeera',
+    type: 'website',
+    locale: 'en_US',
+    images: [
+      {
+        url: 'https://zapeera.com/og-home.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Cookie Policy - Zapeera',
+        type: 'image/jpeg',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Cookie Policy - Zapeera',
+    description: 'Zapeera cookie policy and cookie management.',
+    images: ['https://zapeera.com/og-home.jpg'],
+    creator: '@zapeera',
+  },
+  alternates: {
+    canonical: 'https://zapeera.com/cookie-policy',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function CookiePolicyPage() {
   return (

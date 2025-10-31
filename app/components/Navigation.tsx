@@ -12,6 +12,7 @@ const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSolutionsHovered, setIsSolutionsHovered] = useState(false);
+  const [solutionsTimeout, setSolutionsTimeout] = useState<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
   const router = useRouter();
 
@@ -69,6 +70,40 @@ const Navigation = () => {
     };
   }, [isMobileMenuOpen]);
 
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (solutionsTimeout) {
+        clearTimeout(solutionsTimeout);
+      }
+    };
+  }, [solutionsTimeout]);
+
+  // Close mobile menu on Escape key press
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [isMobileMenuOpen]);
+
+  const handleSolutionsMouseEnter = () => {
+    if (solutionsTimeout) {
+      clearTimeout(solutionsTimeout);
+    }
+    setIsSolutionsHovered(true);
+  };
+
+  const handleSolutionsMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setIsSolutionsHovered(false);
+    }, 150); // Small delay to allow mouse movement to dropdown
+    setSolutionsTimeout(timeout);
+  };
+
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Features", path: "/features" },
@@ -82,40 +117,41 @@ const Navigation = () => {
   ];
 
   return (
+    <>
     <nav
       className={`fixed top-0 left-0 right-0 z-50 bg-background backdrop-blur-md transition-all duration-300 ${
         isScrolled ? "shadow-sm" : ""
       }`}
     >
       <Container>
-      <div className="">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+      <div className="w-full">
+        <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center group">
-            <div className="relative w-12 h-12 transition-transform group-hover:scale-110">
+          <Link href="/" className="flex items-center group gap-2 sm:gap-2.5">
+            <div className="relative w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 transition-transform group-hover:scale-110 flex-shrink-0">
               <Image
                 src="/logo.png"
                 alt="Zapeera Logo"
                 fill
                 className="object-contain"
-                sizes="48px"
+                sizes="(max-width: 640px) 32px, (max-width: 1024px) 40px, 48px"
                 priority
               />
             </div>
-            <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+            <span className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
               Zapeera
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) => (
               link.name === "Solutions" ? (
                 <div 
                   key={link.path}
                   className="relative group"
-                  onMouseEnter={() => setIsSolutionsHovered(true)}
-                  onMouseLeave={() => setIsSolutionsHovered(false)}
+                  onMouseEnter={handleSolutionsMouseEnter}
+                  onMouseLeave={handleSolutionsMouseLeave}
                 >
                   <Link
                     href={link.path}
@@ -132,18 +168,20 @@ const Navigation = () => {
                   
                   {/* Dropdown Menu */}
                   {isSolutionsHovered && (
-                    <div className="absolute top-full left-0 mt-2 w-64 bg-background border border-border rounded-lg shadow-lg py-2 z-50 animate-fade-in">
-                      {solutions.map((solution) => (
-                        <Link
-                          key={solution.slug}
-                          href={`/solutions/${solution.slug}`}
-                          className="block px-4 py-2 hover:bg-muted transition-colors"
-                          prefetch={true}
-                        >
-                          <div className="font-medium text-sm text-foreground">{solution.title}</div>
-                          <div className="text-xs text-muted-foreground line-clamp-1">{solution.description}</div>
-                        </Link>
-                      ))}
+                    <div className="absolute top-full left-0 pt-2 z-50" onMouseEnter={handleSolutionsMouseEnter} onMouseLeave={handleSolutionsMouseLeave}>
+                      <div className="w-64 bg-background border border-border rounded-lg shadow-lg py-2 animate-fade-in">
+                        {solutions.map((solution) => (
+                          <Link
+                            key={solution.slug}
+                            href={`/solutions/${solution.slug}`}
+                            className="block px-4 py-2 hover:bg-muted transition-colors"
+                            prefetch={true}
+                          >
+                            <div className="font-medium text-sm text-foreground">{solution.title}</div>
+                            <div className="text-xs text-muted-foreground line-clamp-1">{solution.description}</div>
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
@@ -165,55 +203,69 @@ const Navigation = () => {
           </div>
 
           {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3 xl:gap-4">
             {/* <Button variant="ghost" size="sm">
               Sign In
             </Button> */}
-            <Button size="sm" className="bg-gradient-primary hover:opacity-90">
+            <Button size="sm" className="bg-gradient-primary hover:opacity-90 whitespace-nowrap">
               <Link href="/contact">Start Free Trial</Link>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2"
+            className="lg:hidden p-2 -mr-2 flex-shrink-0"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-6 h-6 text-foreground" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="w-6 h-6 text-foreground" />
             )}
           </button>
         </div>
 
-        {/* Mobile Menu - Fixed Background */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden fixed top-16 left-0 right-0 bottom-0 bg-background/95 backdrop-blur-md z-40 animate-fade-in">
-            <div className="container mx-auto px-4 py-6 h-full overflow-y-auto">
-              <div className="flex flex-col gap-3">
+      </div>
+      </Container>
+    </nav>
+
+    {/* Mobile Menu - Outside nav to avoid z-index issues */}
+    {isMobileMenuOpen && (
+      <div 
+        className="lg:hidden fixed top-14 sm:top-16 left-0 right-0 bottom-0 bg-white dark:bg-background z-[100] overflow-y-auto shadow-2xl"
+      >
+        <div 
+          className="w-full min-h-full bg-white dark:bg-background animate-fade-in"
+          style={{ 
+            paddingTop: '1.5rem',
+            paddingBottom: '2rem'
+          }}
+        >
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="flex flex-col gap-3 sm:gap-4">
                 {navLinks.map((link) => (
                   link.name === "Solutions" ? (
-                    <div key={link.path} className="px-4 py-3">
-                      <div className={`text-base font-medium mb-2 ${
+                    <div key={link.path} className="w-full">
+                      <div className={`text-base sm:text-lg font-semibold mb-3 px-2 sm:px-4 py-2 ${
                         pathname === link.path || pathname?.startsWith("/solutions/")
-                          ? "text-primary"
-                          : "text-foreground/80"
+                          ? "text-primary dark:text-primary"
+                          : "text-gray-900 dark:text-foreground"
                       }`}>
                         {link.name}
                       </div>
-                      <div className="flex flex-col gap-2 ml-2">
+                      <div className="flex flex-col gap-1.5 sm:gap-2 ml-4 sm:ml-6">
                         {solutions.map((solution) => (
                           <Link
                             key={solution.slug}
                             href={`/solutions/${solution.slug}`}
                             prefetch={true}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className={`px-4 py-2 text-sm transition-all duration-200 hover:bg-muted rounded-lg ${
+                            className={`px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base transition-all duration-200 rounded-lg ${
                               pathname === `/solutions/${solution.slug}`
-                                ? "text-primary bg-primary/10"
-                                : "text-foreground/70 hover:text-primary"
+                                ? "text-primary bg-primary/10 font-semibold dark:text-primary dark:bg-primary/20"
+                                : "text-gray-700 dark:text-foreground hover:text-primary hover:bg-gray-100 dark:hover:bg-muted"
                             }`}
                           >
                             {solution.title}
@@ -227,10 +279,10 @@ const Navigation = () => {
                       href={link.path}
                       prefetch={true}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className={`px-4 py-3 text-base font-medium transition-all duration-200 hover:bg-muted rounded-lg ${
+                      className={`px-2 sm:px-4 py-3 sm:py-3.5 text-base sm:text-lg font-semibold transition-all duration-200 rounded-lg ${
                         pathname === link.path
-                          ? "text-primary bg-primary/10 border-l-4 border-primary"
-                          : "text-foreground/80 hover:text-primary"
+                          ? "text-primary bg-primary/10 border-l-4 border-primary dark:text-primary dark:bg-primary/20"
+                          : "text-gray-900 dark:text-foreground hover:text-primary hover:bg-gray-100 dark:hover:bg-muted"
                       }`}
                     >
                       {link.name}
@@ -239,38 +291,36 @@ const Navigation = () => {
                 ))}
                 
                 {/* Mobile CTA Buttons */}
-                <div className="px-4 pt-6 mt-4 border-t border-border flex flex-col gap-3">
+                <div className="px-2 sm:px-4 pt-4 sm:pt-6 mt-4 border-t border-border flex flex-col gap-3">
                   <Button 
                     variant="outline" 
                     size="lg" 
-                    className="w-full"
+                    className="w-full text-base sm:text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Sign In
                   </Button>
                   <Button 
                     size="lg" 
-                    className="w-full bg-gradient-primary hover:opacity-90"
+                    className="w-full bg-gradient-primary hover:opacity-90 text-base sm:text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <Link href="/contact">Start Free Trial</Link>
+                    <Link href="/contact" className="w-full">Start Free Trial</Link>
                   </Button>
                 </div>
                 
                 {/* Additional Info */}
-                <div className="px-4 pt-6 text-center">
-                  <p className="text-sm text-muted-foreground">
+                <div className="px-2 sm:px-4 pt-4 sm:pt-6 text-center pb-6">
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-muted-foreground">
                     Trusted by 5,000+ businesses worldwide
                   </p>
                 </div>
-              </div>
             </div>
           </div>
-        )}
+        </div>
       </div>
-      </Container>
-
-    </nav>
+    )}
+    </>
   );
 };
 

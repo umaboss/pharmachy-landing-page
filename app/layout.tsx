@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/app/components/ui/tooltip";
 import { ReactQueryProvider } from './providers'
 import Loading from './components/ui/loading'
 import PerformanceMonitor from './components/PerformanceMonitor'
+import GoogleVerification from './components/GoogleVerification'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -80,7 +81,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'your-google-verification-code',
+    google: 'q021Kxdt-XlMmlEMsW8LMeSppqPXjr3IfMw1llhujFI',
     yandex: 'your-yandex-verification-code',
     yahoo: 'your-yahoo-verification-code',
   },
@@ -94,6 +95,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <GoogleVerification />
         <ReactQueryProvider>
           <TooltipProvider>
             <Loading>

@@ -837,14 +837,40 @@ export async function generateMetadata({ params }: SolutionPageProps): Promise<M
       'POS system',
       'inventory management'
     ],
+    authors: [{ name: 'Zapeera Team' }],
+    creator: 'Zapeera',
+    publisher: 'Zapeera',
+    metadataBase: new URL('https://zapeera.com'),
     openGraph: {
       title: `${solution.title} - Zapeera`,
       description: solution.description,
       url: `https://zapeera.com/solutions/${params.slug}`,
-      images: [`/og-${params.slug}.jpg`],
+      siteName: 'Zapeera',
+      type: 'website',
+      locale: 'en_US',
+      images: [
+        {
+          url: `https://zapeera.com/og-${params.slug}.jpg`,
+          width: 1200,
+          height: 630,
+          alt: solution.title,
+          type: 'image/jpeg',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${solution.title} - Zapeera`,
+      description: solution.description,
+      images: [`https://zapeera.com/og-${params.slug}.jpg`],
+      creator: '@zapeera',
     },
     alternates: {
       canonical: `https://zapeera.com/solutions/${params.slug}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }
