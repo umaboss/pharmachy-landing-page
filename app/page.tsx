@@ -117,7 +117,7 @@ export default function Home() {
           <main>
             <HeroSection />
             <ClientLogos />
-            <div className=" flex flex-col md:gap-40 gap-10">
+            <div className=" flex flex-col md:gap-40 gap-20">
               <SolutionsSection />
               <FeaturesOverview />
               <HowItWorks />

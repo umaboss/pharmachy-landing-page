@@ -144,7 +144,16 @@ const Footer = () => {
           ))}
         </div>
         {/* Bottom Bar */}
-        <div className="mt-8 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="mt-8 pt-8 border-t border-border hidden md:flex flex-row justify-between items-center gap-4">
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Zapeera. All rights reserved.
+          </p>
+          <div className="flex items-center gap-4 text-sm text-muted-foreground">
+            <span>Trusted by 5,000+ businesses worldwide</span>
+          </div>
+        </div>
+        {/* Mobile Bottom Bar - No Border */}
+        <div className="mt-8 pt-8 flex md:hidden flex-col justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Zapeera. All rights reserved.
           </p>

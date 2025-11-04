@@ -165,7 +165,7 @@ const FAQSection = () => {
       <Container className="relative z-10">
         {/* Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+          <h2 className="text-4xl md:text-5xl font-bold md:mb-4 mb-2 text-gray-900">
             Frequently Asked{" "}
             <span className="text-[#0C2C8A]">Questions</span>
           </h2>

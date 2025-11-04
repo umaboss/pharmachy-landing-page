@@ -34,7 +34,7 @@ const FeaturesOverview = () => {
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16"> {/* reduced mb from 20 to 16 */}
+        <div className="text-center md:mb-16 mb-8"> {/* reduced mb from 20 to 16 */}
           <h2 className="text-4xl text-center flex items-center justify-center gap-[16px] md:text-5xl lg:text-5xl font-bold mb-3"> {/* reduced mb */}
             Core
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">

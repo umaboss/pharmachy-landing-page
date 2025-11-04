@@ -71,7 +71,7 @@ const HeroSection = () => {
 
   return (
     <Container>
-      <section className="flex flex-col lg:flex-row items-center gap-[60px] justify-between  bg-white overflow-hidden  pt-12 sm:pt-[120px]">
+      <section className="flex flex-col lg:flex-row items-center md:gap-[60px] gap-0 justify-between  bg-white overflow-hidden  pt-12 sm:pt-[120px]">
         {/* LEFT SIDE */}
         <div className="w-full md:pt-[0px] pt-[50px] lg:w-1/2 text-center lg:text-left z-10 mb-8 lg:mb-0">
           <h1 className="text-3xl sm:text-4l md:text-5xl lg:text-6xl font-bold leading-tight mb-3 sm:mb-4">
@@ -109,7 +109,7 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <div className="w-full lg:w-1/2 flex justify-center pb-[100px] pt-[30px] relative">
+        <div className="w-full lg:w-1/2 flex justify-center md:pb-[100px] pb-[80px] md:pt-[30px] pt-[0px] relative">
           <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-xl h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] flex items-center justify-center">
             {images.map((img, i) => (
               <div
