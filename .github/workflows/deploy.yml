@@ -1,0 +1,37 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          script: |
+            cd /home/zapeera/apps/pharmachy-landing-page
+
+            echo ">>> Pulling latest code"
+            git fetch origin
+            git reset --hard origin/main
+
+            echo ">>> Installing dependencies (including dev)"
+            npm install
+
+            echo ">>> Building Next.js project"
+            npm run build
+
+            echo ">>> Restarting PM2 process"
+            pm2 stop pharmachy-landing-page || true
+            pm2 delete pharmachy-landing-page || true
+            pm2 start npm --name "pharmachy-landing-page" -- start
+            pm2 save
+
+            echo "✅ Deployment completed successfully!"
