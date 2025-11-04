@@ -146,7 +146,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-8 pt-8 border-t border-border hidden md:flex flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Zapeera. All rights reserved.
+            © {new Date().getFullYear()} Zapeera. All rights reserved .
           </p>
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <span>Trusted by 5,000+ businesses worldwide</span>
