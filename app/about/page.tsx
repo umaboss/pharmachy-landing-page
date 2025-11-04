@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import Navigation from "@/app/components/Navigation";
-import Footer from "@/app/components/Footer";
-import About from "@/app/pages/About";
+import Navigation from "../../app/components/Navigation";
+import Footer from "../../app/components/Footer";
+import About from "../../app/pages/About";
 
 export const metadata: Metadata = {
   title: 'About Us - Zapeera',
