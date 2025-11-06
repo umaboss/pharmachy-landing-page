@@ -75,7 +75,7 @@ const HeroSection = () => {
         {/* LEFT SIDE */}
         <div className="w-full md:pt-[0px] pt-[50px] lg:w-1/2 text-center lg:text-left z-10 mb-8 lg:mb-0">
           <h1 className="text-3xl sm:text-4l md:text-5xl lg:text-6xl font-bold leading-tight mb-3 sm:mb-4">
-            Run Your Business Umair is big big brand dont be jealous..<br />
+            Run Your Business<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
               {text}
             </span>
