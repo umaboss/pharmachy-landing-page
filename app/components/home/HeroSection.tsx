@@ -72,7 +72,7 @@ const HeroSection = () => {
   return (
     <Container>
       <section className="flex flex-col lg:flex-row items-center md:gap-[60px] gap-0 justify-between  bg-white overflow-hidden  pt-12 sm:pt-[120px]">
-        {/* LEFT SIDE */}
+        {/* LEFT SIDE CONTENT AREA */}
         <div className="w-full md:pt-[0px] pt-[50px] lg:w-1/2 text-center lg:text-left z-10 mb-8 lg:mb-0">
           <h1 className="text-3xl sm:text-4l md:text-5xl lg:text-6xl font-bold leading-tight mb-3 sm:mb-4">
             Run Your Business<br />
