@@ -8,7 +8,11 @@ import Link from "next/link";
 import { Switch } from "@/app/components/ui/switch";
 import Container from "../ui/container";
 
-const PricingSection = () => {
+interface PricingSectionProps {
+  showHeading?: boolean;
+}
+
+const PricingSection = ({ showHeading = true }: PricingSectionProps) => {
   const [isYearly, setIsYearly] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(1); // Professional plan (index 1) is default active
 
@@ -79,26 +83,28 @@ const PricingSection = () => {
      <Container>
      <div className="">
         {/* Header Section */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Simple,{" "}
-            <span className="text-[#0C2C8A]">Transparent Pricing</span>
-          </h2>
-          <p className="text-lg text-gray-600 mb-8">
-            Choose the plan that's right for your business. All plans include a 14-day free trial.
-          </p>
-
-          {/* Billing Toggle */}
-          <div className="flex items-center justify-center mb-[80px] gap-4">
-            <span className={`text-sm ${!isYearly ? "font-semibold text-black" : "text-gray-500"}`}>
-              Monthly
-            </span>
-            <Switch checked={isYearly} onCheckedChange={setIsYearly} />
-            <span className={`text-sm ${isYearly ? "font-semibold text-black" : "text-gray-500"}`}>
-              Yearly
-              <span className="ml-2 text-xs text-[#0C2C8A]">(Save 17%)</span>
-            </span>
+        {showHeading && (
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Simple,{" "}
+              <span className="text-[#0C2C8A]">Transparent Pricing</span>
+            </h2>
+            <p className="text-lg text-gray-600 mb-8">
+              Choose the plan that's right for your business. All plans include a 14-day free trial.
+            </p>
           </div>
+        )}
+
+        {/* Billing Toggle */}
+        <div className="flex items-center justify-center mb-[80px] gap-4">
+          <span className={`text-sm ${!isYearly ? "font-semibold text-black" : "text-gray-500"}`}>
+            Monthly
+          </span>
+          <Switch checked={isYearly} onCheckedChange={setIsYearly} />
+          <span className={`text-sm ${isYearly ? "font-semibold text-black" : "text-gray-500"}`}>
+            Yearly
+            <span className="ml-2 text-xs text-[#0C2C8A]">(Save 17%)</span>
+          </span>
         </div>
 
         {/* Pricing Cards */}
