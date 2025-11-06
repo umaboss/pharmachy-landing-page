@@ -18,13 +18,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate environment variables
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+      console.error('Missing email configuration: GMAIL_USER or GMAIL_APP_PASSWORD not set');
+      return NextResponse.json(
+        { error: 'Server configuration error. Please contact the administrator.' },
+        { status: 500 }
+      );
+    }
+
     // Gmail SMTP configuration
-    // You'll need to set these environment variables
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.GMAIL_USER, // Your Gmail address
-        pass: process.env.GMAIL_APP_PASSWORD, // Gmail App Password (not regular password)
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
       },
     });
 
@@ -206,10 +214,19 @@ This email was sent from your website contact form at ${new Date().toLocaleStrin
       { message: 'Email sent successfully!' },
       { status: 200 }
     );
-  } catch (error) {
-    console.error('Error sending email:', error);
+  } catch (error: any) {
+    console.error('Error sending contact form email:', error);
+    
+    // Provide more specific error messages
+    let errorMessage = 'Failed to send email. Please try again later.';
+    if (error.code === 'EAUTH') {
+      errorMessage = 'Email authentication failed. Please contact support.';
+    } else if (error.code === 'ECONNECTION') {
+      errorMessage = 'Connection error. Please try again later.';
+    }
+    
     return NextResponse.json(
-      { error: 'Failed to send email. Please try again later.' },
+      { error: errorMessage },
       { status: 500 }
     );
   }

@@ -21,6 +21,7 @@ import {
 const Careers = () => {
   const [openDialogIndex, setOpenDialogIndex] = useState<number | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedFiles, setSelectedFiles] = useState<{ [key: number]: File | null }>({});
   const formRefs = useRef<{ [key: number]: HTMLFormElement | null }>({});
 
   const openPositions = [
@@ -68,13 +69,51 @@ const Careers = () => {
     },
   ];
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+    const file = e.target.files?.[0] || null;
+    
+    if (file) {
+      // Validate file size (max 5MB)
+      const maxSize = 5 * 1024 * 1024; // 5MB
+      if (file.size > maxSize) {
+        toast.error('File too large', {
+          description: 'Please select a file smaller than 5MB.',
+        });
+        e.target.value = ''; // Clear the input
+        setSelectedFiles((prev) => ({ ...prev, [index]: null }));
+        return;
+      }
+
+      // Validate file type
+      const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+      const allowedExtensions = ['.pdf', '.doc', '.docx'];
+      const fileExtension = '.' + file.name.split('.').pop()?.toLowerCase();
+      
+      if (!allowedTypes.includes(file.type) && !allowedExtensions.includes(fileExtension)) {
+        toast.error('Invalid file type', {
+          description: 'Please select a PDF, DOC, or DOCX file.',
+        });
+        e.target.value = ''; // Clear the input
+        setSelectedFiles((prev) => ({ ...prev, [index]: null }));
+        return;
+      }
+
+      setSelectedFiles((prev) => ({ ...prev, [index]: file }));
+      toast.success('File selected', {
+        description: `${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`,
+      });
+    } else {
+      setSelectedFiles((prev) => ({ ...prev, [index]: null }));
+    }
+  };
+
   const handleApply = async (e: React.FormEvent<HTMLFormElement>, position: typeof openPositions[0], index: number) => {
     e.preventDefault();
     setIsSubmitting(true);
     
     const form = e.currentTarget;
     const formData = new FormData(form);
-    const resumeFile = formData.get('resume') as File | null;
+    const resumeFile = selectedFiles[index] || (formData.get('resume') as File | null);
 
     // Create FormData to send file
     const submitFormData = new FormData();
@@ -110,6 +149,7 @@ const Careers = () => {
         if (formRefs.current[index]) {
           formRefs.current[index]?.reset();
         }
+        setSelectedFiles((prev) => ({ ...prev, [index]: null }));
         setOpenDialogIndex(null);
       } else {
         toast.error('Failed to submit application', {
@@ -272,9 +312,27 @@ const Careers = () => {
                             <label htmlFor={`resume-${index}`} className="block text-sm font-medium mb-2">
                               Resume / CV *
                             </label>
-                            <Input id={`resume-${index}`} name="resume" type="file" accept=".pdf,.doc,.docx" required />
+                            <Input 
+                              id={`resume-${index}`} 
+                              name="resume" 
+                              type="file" 
+                              accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" 
+                              required 
+                              onChange={(e) => handleFileChange(e as React.ChangeEvent<HTMLInputElement>, index)}
+                              className="cursor-pointer"
+                            />
+                            {selectedFiles[index] && (
+                              <div className="mt-2 p-2 bg-muted rounded-md">
+                                <p className="text-sm font-medium">
+                                  ✓ {selectedFiles[index]!.name}
+                                </p>
+                                <p className="text-xs text-muted-foreground">
+                                  Size: {(selectedFiles[index]!.size / 1024 / 1024).toFixed(2)} MB
+                                </p>
+                              </div>
+                            )}
                             <p className="text-xs text-muted-foreground mt-1">
-                              Accepted formats: PDF, DOC, DOCX
+                              Accepted formats: PDF, DOC, DOCX (Max 5MB)
                             </p>
                           </div>
 

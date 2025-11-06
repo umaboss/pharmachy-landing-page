@@ -29,10 +29,28 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate environment variables
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+      console.error('Missing email configuration: GMAIL_USER or GMAIL_APP_PASSWORD not set');
+      return NextResponse.json(
+        { error: 'Server configuration error. Please contact the administrator.' },
+        { status: 500 }
+      );
+    }
+
     // Prepare attachments array
     const attachments: any[] = [];
     
     if (resumeFile && resumeFile.size > 0) {
+      // Validate file size on server (max 5MB)
+      const maxSize = 5 * 1024 * 1024; // 5MB
+      if (resumeFile.size > maxSize) {
+        return NextResponse.json(
+          { error: 'File size exceeds 5MB limit. Please upload a smaller file.' },
+          { status: 400 }
+        );
+      }
+
       try {
         const bytes = await resumeFile.arrayBuffer();
         const buffer = Buffer.from(bytes);
@@ -303,10 +321,19 @@ This job application was submitted from your website careers page at ${new Date(
       { message: 'Application submitted successfully!' },
       { status: 200 }
     );
-  } catch (error) {
-    console.error('Error sending application email:', error);
+  } catch (error: any) {
+    console.error('Error sending careers application email:', error);
+    
+    // Provide more specific error messages
+    let errorMessage = 'Failed to submit application. Please try again later.';
+    if (error.code === 'EAUTH') {
+      errorMessage = 'Email authentication failed. Please contact support.';
+    } else if (error.code === 'ECONNECTION') {
+      errorMessage = 'Connection error. Please try again later.';
+    }
+    
     return NextResponse.json(
-      { error: 'Failed to submit application. Please try again later.' },
+      { error: errorMessage },
       { status: 500 }
     );
   }
