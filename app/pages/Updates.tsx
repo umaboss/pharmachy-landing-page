@@ -898,9 +898,11 @@ const Updates = () => {
             <button className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 px-8 py-3 rounded-full font-semibold transition-colors">
               <Link href="/contact">Start Free Trial</Link>
             </button>
-            <button className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 py-3 rounded-full font-semibold transition-colors">
-              Learn More
-            </button>
+            <Link href="/about">
+              <button className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 py-3 rounded-full font-semibold transition-colors w-full sm:w-auto">
+                Learn More
+              </button>
+            </Link>
           </div>
         </div>
       </div>

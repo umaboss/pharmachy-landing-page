@@ -32,7 +32,7 @@ const StepCard = ({ step, index, isLast }: { step: typeof steps[number]; index: 
   >
     {/* Connector line (only for large screens and if not last step) */}
     {!isLast && (
-      <div className="hidden lg:block absolute top-8 left-[110%] w-full h-0.5 bg-gradient-to-r from-primary to-transparent -translate-x-1/2" />
+      <div className="hidden lg:block absolute top-8 left-[108%] w-[93%] h-0.5 bg-gradient-to-r from-primary to-transparent -translate-x-1/2" />
     )}
 
     <div className="text-center lg:text-left">

@@ -1,6 +1,6 @@
 'use client'
 
-import type { Metadata } from 'next';
+import { useState, useRef } from 'react';
 import FloatingCTA from "@/app/components/FloatingCTA";
 import { MapPin, Clock, Briefcase, ArrowRight } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
@@ -8,40 +8,20 @@ import { Card } from "@/app/components/ui/card";
 import { Input } from "@/app/components/ui/input";
 import { Textarea } from "@/app/components/ui/textarea";
 import Loading from "../components/ui/loading";
-// import { useToast } from "@/app/components/ui/use-toast";
-
-export const metadata: Metadata = {
-  title: 'Careers - Join the Zapeera Team',
-  description: 'Join Zapeera and help transform businesses worldwide. Explore career opportunities in software development, sales, marketing, and customer success.',
-  keywords: [
-    'zapeera careers',
-    'business software jobs',
-    'tech careers',
-    'software development jobs',
-    'sales careers',
-    'marketing jobs',
-    'customer success careers'
-  ],
-  openGraph: {
-    title: 'Careers - Join the Zapeera Team',
-    description: 'Join Zapeera and help transform businesses worldwide. Explore career opportunities in software development, sales, marketing, and customer success.',
-    url: 'https://zapeera.com/careers',
-    images: ['/og-careers.jpg'],
-  },
-  alternates: {
-    canonical: 'https://zapeera.com/careers',
-  },
-};
+import { toast } from "sonner";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogDescription,
 } from "@/app/components/ui/dialog";
 
 const Careers = () => {
-  // const { toast } = useToast();
+  const [openDialogIndex, setOpenDialogIndex] = useState<number | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRefs = useRef<{ [key: number]: HTMLFormElement | null }>({});
 
   const openPositions = [
     {
@@ -88,13 +68,62 @@ const Careers = () => {
     },
   ];
 
-  const handleApply = (e: React.FormEvent) => {
+  const handleApply = async (e: React.FormEvent<HTMLFormElement>, position: typeof openPositions[0], index: number) => {
     e.preventDefault();
-    alert("Application submitted! We'll review your application and get back to you soon.");
-    // toast({
-    //   title: "Application submitted!",
-    //   description: "We'll review your application and get back to you soon.",
-    // });
+    setIsSubmitting(true);
+    
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const resumeFile = formData.get('resume') as File | null;
+
+    // Create FormData to send file
+    const submitFormData = new FormData();
+    submitFormData.append('firstName', formData.get('firstName') as string);
+    submitFormData.append('lastName', formData.get('lastName') as string);
+    submitFormData.append('email', formData.get('email') as string);
+    submitFormData.append('phone', formData.get('phone') as string);
+    submitFormData.append('linkedin', formData.get('linkedin') as string || '');
+    submitFormData.append('portfolio', formData.get('portfolio') as string || '');
+    submitFormData.append('coverLetter', formData.get('coverLetter') as string || '');
+    submitFormData.append('positionTitle', position.title);
+    submitFormData.append('department', position.department);
+    submitFormData.append('location', position.location);
+    
+    // Add resume file if provided
+    if (resumeFile && resumeFile.size > 0) {
+      submitFormData.append('resume', resumeFile);
+    }
+
+    try {
+      const response = await fetch('/api/careers', {
+        method: 'POST',
+        body: submitFormData, // Don't set Content-Type header, browser will set it with boundary
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        toast.success('Application submitted successfully!', {
+          description: "We'll review your application and get back to you soon.",
+        });
+        // Reset form and close dialog
+        if (formRefs.current[index]) {
+          formRefs.current[index]?.reset();
+        }
+        setOpenDialogIndex(null);
+      } else {
+        toast.error('Failed to submit application', {
+          description: result.error || 'Please try again later.',
+        });
+      }
+    } catch (error) {
+      console.error('Error submitting application:', error);
+      toast.error('Failed to submit application', {
+        description: 'Please check your internet connection and try again.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -174,7 +203,7 @@ const Careers = () => {
                       </div>
                     </div>
 
-                    <Dialog>
+                    <Dialog open={openDialogIndex === index} onOpenChange={(open) => setOpenDialogIndex(open ? index : null)}>
                       <DialogTrigger asChild>
                         <Button className="bg-gradient-primary hover:opacity-90 group">
                           Apply Now
@@ -184,72 +213,90 @@ const Careers = () => {
                       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
                         <DialogHeader>
                           <DialogTitle>Apply for {position.title}</DialogTitle>
+                          <DialogDescription>
+                            Fill out the form below to submit your application. We'll review your application and get back to you soon.
+                          </DialogDescription>
                         </DialogHeader>
                         
-                        <form onSubmit={handleApply} className="space-y-6 mt-4">
+                        <form 
+                          ref={(el) => {
+                            if (el) formRefs.current[index] = el;
+                          }}
+                          onSubmit={(e) => handleApply(e, position, index)} 
+                          className="space-y-6 mt-4"
+                        >
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                              <label htmlFor="firstName" className="block text-sm font-medium mb-2">
+                              <label htmlFor={`firstName-${index}`} className="block text-sm font-medium mb-2">
                                 First Name *
                               </label>
-                              <Input id="firstName" required />
+                              <Input id={`firstName-${index}`} name="firstName" required />
                             </div>
                             <div>
-                              <label htmlFor="lastName" className="block text-sm font-medium mb-2">
+                              <label htmlFor={`lastName-${index}`} className="block text-sm font-medium mb-2">
                                 Last Name *
                               </label>
-                              <Input id="lastName" required />
+                              <Input id={`lastName-${index}`} name="lastName" required />
                             </div>
                           </div>
 
                           <div>
-                            <label htmlFor="email" className="block text-sm font-medium mb-2">
+                            <label htmlFor={`email-${index}`} className="block text-sm font-medium mb-2">
                               Email Address *
                             </label>
-                            <Input id="email" type="email" required />
+                            <Input id={`email-${index}`} name="email" type="email" required />
                           </div>
 
                           <div>
-                            <label htmlFor="phone" className="block text-sm font-medium mb-2">
+                            <label htmlFor={`phone-${index}`} className="block text-sm font-medium mb-2">
                               Phone Number *
                             </label>
-                            <Input id="phone" type="tel" required />
+                            <Input id={`phone-${index}`} name="phone" type="tel" required />
                           </div>
 
                           <div>
-                            <label htmlFor="linkedin" className="block text-sm font-medium mb-2">
+                            <label htmlFor={`linkedin-${index}`} className="block text-sm font-medium mb-2">
                               LinkedIn Profile
                             </label>
-                            <Input id="linkedin" placeholder="https://linkedin.com/in/yourprofile" />
+                            <Input id={`linkedin-${index}`} name="linkedin" type="url" placeholder="https://linkedin.com/in/yourprofile" />
                           </div>
 
                           <div>
-                            <label htmlFor="portfolio" className="block text-sm font-medium mb-2">
+                            <label htmlFor={`portfolio-${index}`} className="block text-sm font-medium mb-2">
                               Portfolio / Website
                             </label>
-                            <Input id="portfolio" placeholder="https://yourportfolio.com" />
+                            <Input id={`portfolio-${index}`} name="portfolio" type="url" placeholder="https://yourportfolio.com" />
                           </div>
 
                           <div>
-                            <label htmlFor="resume" className="block text-sm font-medium mb-2">
+                            <label htmlFor={`resume-${index}`} className="block text-sm font-medium mb-2">
                               Resume / CV *
                             </label>
-                            <Input id="resume" type="file" accept=".pdf,.doc,.docx" required />
+                            <Input id={`resume-${index}`} name="resume" type="file" accept=".pdf,.doc,.docx" required />
+                            <p className="text-xs text-muted-foreground mt-1">
+                              Accepted formats: PDF, DOC, DOCX
+                            </p>
                           </div>
 
                           <div>
-                            <label htmlFor="coverLetter" className="block text-sm font-medium mb-2">
+                            <label htmlFor={`coverLetter-${index}`} className="block text-sm font-medium mb-2">
                               Cover Letter
                             </label>
                             <Textarea
-                              id="coverLetter"
+                              id={`coverLetter-${index}`}
+                              name="coverLetter"
                               placeholder="Tell us why you'd be a great fit for this role..."
                               className="min-h-[120px]"
                             />
                           </div>
 
-                          <Button type="submit" size="lg" className="w-full bg-gradient-primary hover:opacity-90">
-                            Submit Application
+                          <Button 
+                            type="submit" 
+                            size="lg" 
+                            className="w-full bg-gradient-primary hover:opacity-90"
+                            disabled={isSubmitting}
+                          >
+                            {isSubmitting ? 'Submitting...' : 'Submit Application'}
                           </Button>
                         </form>
                       </DialogContent>

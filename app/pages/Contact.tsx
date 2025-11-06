@@ -1,7 +1,6 @@
 'use client'
 
-import { memo, useCallback, useState } from 'react';
-import type { Metadata } from 'next';
+import { memo, useCallback, useState, useRef } from 'react';
 import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
 import { Input } from "@/app/components/ui/input";
@@ -10,49 +9,59 @@ import { Card } from "@/app/components/ui/card";
 import Container from "../components/ui/container";
 import Loading from "../components/ui/loading";
 import StructuredData from "@/app/components/StructuredData";
-// import { useToast } from "@/app/components/ui/use-toast";
-
-export const metadata: Metadata = {
-  title: 'Contact Us - Get in Touch with Zapeera',
-  description: 'Contact Zapeera for business management solutions. Get support, schedule a demo, or start your free trial. Our team is here to help your business grow.',
-  keywords: [
-    'contact zapeera',
-    'business management support',
-    'schedule demo',
-    'zapeera support',
-    'business software contact',
-    'POS system support',
-    'inventory management help'
-  ],
-  openGraph: {
-    title: 'Contact Us - Get in Touch with Zapeera',
-    description: 'Contact Zapeera for business management solutions. Get support, schedule a demo, or start your free trial.',
-    url: 'https://zapeera.com/contact',
-    images: ['/og-contact.jpg'],
-  },
-  alternates: {
-    canonical: 'https://zapeera.com/contact',
-  },
-};
+import { toast } from "sonner";
 
 const Contact = memo(() => {
-  // const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = useCallback(async (e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    alert("Message sent! We'll get back to you as soon as possible.");
-    setIsSubmitting(false);
-    
-    // toast({
-    //   title: "Message sent!",
-    //   description: "We'll get back to you as soon as possible.",
-    // });
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      company: formData.get('company') as string,
+      phone: formData.get('phone') as string,
+      subject: formData.get('subject') as string,
+      message: formData.get('message') as string,
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        toast.success('Message sent successfully!', {
+          description: "We'll get back to you within 24 hours.",
+        });
+        // Reset form using stored reference
+        if (formRef.current) {
+          formRef.current.reset();
+        }
+      } else {
+        toast.error('Failed to send message', {
+          description: result.error || 'Please try again later.',
+        });
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error('Failed to send message', {
+        description: 'Please check your internet connection and try again.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }, []);
 
   return (
@@ -159,7 +168,7 @@ const Contact = memo(() => {
               <div className="lg:col-span-2">
                 <Card className="p-8 lg:p-12 border-2 border-border">
                   <h2 className="text-2xl font-bold mb-6">Send us a message</h2>
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
                         <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -167,6 +176,7 @@ const Contact = memo(() => {
                         </label>
                         <Input
                           id="name"
+                          name="name"
                           placeholder="John Doe"
                           required
                         />
@@ -177,6 +187,7 @@ const Contact = memo(() => {
                         </label>
                         <Input
                           id="email"
+                          name="email"
                           type="email"
                           placeholder="john@example.com"
                           required
@@ -191,6 +202,7 @@ const Contact = memo(() => {
                         </label>
                         <Input
                           id="company"
+                          name="company"
                           placeholder="Your Company"
                         />
                       </div>
@@ -200,6 +212,7 @@ const Contact = memo(() => {
                         </label>
                         <Input
                           id="phone"
+                          name="phone"
                           type="tel"
                           placeholder="+1 (123) 456-7890"
                         />
@@ -212,6 +225,7 @@ const Contact = memo(() => {
                       </label>
                       <Input
                         id="subject"
+                        name="subject"
                         placeholder="How can we help?"
                         required
                       />
@@ -223,6 +237,7 @@ const Contact = memo(() => {
                       </label>
                       <Textarea
                         id="message"
+                        name="message"
                         placeholder="Tell us more about your inquiry..."
                         className="min-h-[150px]"
                         required

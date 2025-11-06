@@ -10,6 +10,7 @@ import Container from "../ui/container";
 
 const PricingSection = () => {
   const [isYearly, setIsYearly] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState(1); // Professional plan (index 1) is default active
 
   const plans = [
     {
@@ -105,17 +106,20 @@ const PricingSection = () => {
           {plans.map((plan, index) => (
             <Card
               key={index}
-              className={`relative p-8 rounded-2xl transition-all duration-300 shadow-md hover:shadow-xl ${
-                plan.popular
-                  ? "border-2 border-[#0C2C8A] scale-105"
-                  : "border border-gray-200"
+              onClick={() => {
+                setSelectedPlan(index);
+              }}
+              className={`relative p-8 rounded-2xl transition-all duration-300 shadow-md hover:shadow-xl cursor-pointer ${
+                selectedPlan === index
+                  ? "!border-2 !border-[#0C2C8A] lg:scale-105 scale-[1.02] bg-white shadow-lg"
+                  : "border-gray-200"
               }`}
             >
-              {/* Popular Badge */}
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <div className="bg-[#0C2C8A] text-white px-4 py-1 rounded-full text-sm font-medium shadow">
-                    Most Popular
+              {/* Active Badge - Shows "Most Popular" for Professional, "Selected" for others */}
+              {selectedPlan === index && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+                  <div className="bg-[#0C2C8A] text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">
+                    {index === 1 ? "Most Popular" : "Selected"}
                   </div>
                 </div>
               )}
@@ -142,15 +146,17 @@ const PricingSection = () => {
               </div>
 
               {/* Button */}
-              <Button
-                className={`w-full mb-6 py-3 rounded-lg text-white font-semibold transition-all ${
-                  plan.popular
-                    ? "bg-[#0C2C8A] hover:bg-[#0a256f]"
-                    : "bg-gray-100 hover:bg-gray-200 text-black"
-                }`}
-              >
-                {plan.monthlyPrice ? <Link href="/contact">Start Free Trial</Link> : <Link href="/contact">Contact Sales</Link>}
-              </Button>
+              <Link href="/contact" className="block w-full" onClick={(e) => e.stopPropagation()}>
+                <Button
+                  className={`w-full mb-6 py-3 rounded-lg text-white font-semibold transition-all ${
+                    selectedPlan === index
+                      ? "bg-[#0C2C8A] hover:bg-[#0a256f]"
+                      : "bg-gray-100 hover:bg-gray-200 text-black"
+                  }`}
+                >
+                  {plan.monthlyPrice ? "Start Free Trial" : "Contact Sales"}
+                </Button>
+              </Link>
 
               {/* Features List */}
               <ul className="space-y-3">

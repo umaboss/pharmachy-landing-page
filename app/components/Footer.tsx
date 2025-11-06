@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { Facebook, Twitter, Linkedin, Instagram, Mail, ChevronDown, ChevronUp } from "lucide-react";
+import Image from "next/image";
+import { Facebook, Linkedin, Instagram, Youtube, ChevronDown, ChevronUp } from "lucide-react";
 import { Input } from "@/app/components/ui/input";
 import { Button } from "@/app/components/ui/button";
 import Container from "./ui/container";
@@ -23,7 +24,7 @@ const Footer = () => {
     Resources: [
       { name: "Blog", path: "/blog" },
       { name: "Help Center", path: "tel:+923131670125" },
-      { name: "API Docs", path: "/updates" },
+      { name: "API Docs", path: "/product-update" },
     ],
     Legal: [
       { name: "Privacy Policy", path: "/privacy-policy" },
@@ -43,11 +44,18 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center text-primary-foreground font-bold text-xl">
-                Z
+            <Link href="/" className="flex items-center group gap-2 sm:gap-2.5 mb-4">
+              <div className="relative w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 transition-transform group-hover:scale-110 flex-shrink-0">
+                <Image
+                  src="/logo.png"
+                  alt="Zapeera Logo"
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 640px) 32px, (max-width: 1024px) 40px, 48px"
+                  priority
+                />
               </div>
-              <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+              <span className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
                 Zapeera
               </span>
             </Link>
@@ -55,17 +63,22 @@ const Footer = () => {
               The all-in-one business management and POS solution. Built to help businesses grow smarter and faster.
             </p>
             <div className="flex gap-4">
-              <a href="https://web.facebook.com/profile.php?id=61582397802995" className="w-10 h-10 rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-colors flex items-center justify-center">
+              <a href="https://web.facebook.com/profile.php?id=61582397802995" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-colors flex items-center justify-center">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-colors flex items-center justify-center">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="https://www.linkedin.com/company/zapeera/" className="w-10 h-10 rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-colors flex items-center justify-center">
+              <a href="https://www.linkedin.com/company/zapeera/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-colors flex items-center justify-center">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="https://www.instagram.com/zapeera.official/" className="w-10 h-10 rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-colors flex items-center justify-center">
+              <a href="https://www.instagram.com/zapeera.official/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-colors flex items-center justify-center">
                 <Instagram className="w-5 h-5" />
+              </a>
+              <a href="https://www.youtube.com/@zapeera" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-colors flex items-center justify-center">
+                <Youtube className="w-5 h-5" />
+              </a>
+              <a href="https://www.tiktok.com/@zapeera" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-colors flex items-center justify-center">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                </svg>
               </a>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { Zap, Lock, Headphones, TrendingUp, Globe, Award, ArrowRight } from "lucide-react";
+import { Zap, Lock, Headphones, TrendingUp, Globe, Award } from "lucide-react";
 import Container from "../ui/container";
 
 const WhyChooseUs = () => {
@@ -85,12 +85,6 @@ const WhyChooseUs = () => {
                 <p className="text-muted-foreground leading-relaxed mb-6 group-hover:text-foreground/80 transition-colors duration-300">
                   {reason.description}
                 </p>
-
-                {/* Learn More Link */}
-                <div className="flex items-center gap-2 text-muted-foreground font-medium group-hover:text-primary transition-colors cursor-pointer">
-                  Learn more
-                  <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-                </div>
 
                 {/* Corner Accent */}
                 <div className="absolute top-4 right-4 w-3 h-3 bg-[#0C2C8A] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200" />

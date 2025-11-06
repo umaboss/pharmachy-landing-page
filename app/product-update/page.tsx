@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Product Updates & Release Notes - Zapeera',
     description: 'Stay updated with the latest Zapeera product updates and new features.',
-    url: 'https://zapeera.com/updates-product',
+    url: 'https://zapeera.com/product-update',
     siteName: 'Zapeera',
     type: 'website',
     locale: 'en_US',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     creator: '@zapeera',
   },
   alternates: {
-    canonical: 'https://zapeera.com/updates-product',
+    canonical: 'https://zapeera.com/product-update',
   },
   robots: {
     index: true,

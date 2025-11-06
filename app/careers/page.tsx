@@ -5,13 +5,20 @@ import Careers from "@/app/pages/Careers";
 
 export const metadata: Metadata = {
   title: 'Careers - Join the Zapeera Team',
-  description: 'Join Zapeera and help transform business management. Explore career opportunities in software development, sales, marketing, and customer support.',
+  description: 'Join Zapeera and help transform businesses worldwide. Explore career opportunities in software development, sales, marketing, and customer success. Remote-first positions available with competitive salary and benefits.',
   keywords: [
     'zapeera careers',
-    'software jobs',
-    'tech careers',
     'business software jobs',
-    'software development careers'
+    'tech careers',
+    'software development jobs',
+    'sales careers',
+    'marketing jobs',
+    'customer success careers',
+    'remote jobs',
+    'software engineering careers',
+    'product designer jobs',
+    'frontend engineer jobs',
+    'backend engineer jobs'
   ],
   authors: [{ name: 'Zapeera Team' }],
   creator: 'Zapeera',
@@ -19,14 +26,14 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://zapeera.com'),
   openGraph: {
     title: 'Careers - Join the Zapeera Team',
-    description: 'Join Zapeera and help transform business management. Explore career opportunities.',
+    description: 'Join Zapeera and help transform businesses worldwide. Explore career opportunities in software development, sales, marketing, and customer success.',
     url: 'https://zapeera.com/careers',
     siteName: 'Zapeera',
     type: 'website',
     locale: 'en_US',
     images: [
       {
-        url: 'https://zapeera.com/og-home.jpg',
+        url: 'https://zapeera.com/careers',
         width: 1200,
         height: 630,
         alt: 'Careers - Join the Zapeera Team',
@@ -37,7 +44,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Careers - Join the Zapeera Team',
-    description: 'Explore career opportunities at Zapeera.',
+    description: 'Explore career opportunities at Zapeera. Join our team and help transform businesses worldwide.',
     images: ['https://zapeera.com/og-home.jpg'],
     creator: '@zapeera',
   },

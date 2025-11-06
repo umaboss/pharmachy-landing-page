@@ -110,7 +110,7 @@ const Navigation = () => {
     { name: "Solutions", path: "/solutions" },
     { name: "Pricing", path: "/pricing" },
     { name: "Blogs", path: "/blogs" },
-    { name: "Updates", path: "/updates-product" },
+    { name: "Updates", path: "/product-update" },
     { name: "About", path: "/about" },
     { name: "Careers", path: "/careers" },
     { name: "Contact", path: "/contact" },
