@@ -33,6 +33,9 @@ jobs:
             echo "📦 Installing production dependencies..."
             npm ci
 
+            echo "🔨 Building production bundle..."
+            npm run build
+
             echo "♻️ Restarting PM2 process..."
             pm2 delete frontend || true
             pm2 start npm --name "frontend" -- start
