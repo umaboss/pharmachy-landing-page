@@ -56,38 +56,30 @@ const WhyChooseUs = () => {
           </p>
         </div>
 
-        {/* Stacked Cards Grid */}
+        {/* Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 mb-8">
           {reasons.map((reason, index) => (
             <div
               key={index}
-              className="group relative"
-              style={{ transform: `rotate(${index % 2 === 0 ? '-1' : '1'}deg)` }}
+              className="group"
             >
-              {/* Card Stack Effect */}
-              <div className="absolute inset-0 bg-[#0C2C8A] rounded-3xl transform rotate-1 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:rotate-3" />
-              <div className="absolute inset-0 bg-[#0C2C8A] rounded-3xl transform -rotate-1 opacity-0 transition-all duration-300 group-hover:opacity-50 group-hover:-rotate-3" />
-              
               {/* Main Card */}
-              <div className="relative bg-card rounded-3xl p-8 border border-border shadow-xl transform transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl mb-4">
+              <div className="relative bg-card rounded-2xl p-8 border border-border/50 transition-all duration-300 hover:shadow-lg">
                 {/* Icon with Background */}
-                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                  <div className="w-12 h-12 rounded-xl bg-[#0C2C8A] flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-500">
-                    <reason.icon className="w-6 h-6 text-white" />
+                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center">
+                    <reason.icon className="w-6 h-6 text-primary-foreground" />
                   </div>
                 </div>
 
                 {/* Content */}
-                <h3 className="text-2xl font-bold mb-4 text-card-foreground group-hover:text-[#0C2C8A] group-hover:text-[#0C2C8A] group-hover:from-primary group-hover:to-secondary transition-all duration-300">
+                <h3 className="text-2xl font-bold mb-4 text-card-foreground group-hover:text-primary transition-colors duration-300">
                   {reason.title}
                 </h3>
                 
-                <p className="text-muted-foreground leading-relaxed mb-6 group-hover:text-foreground/80 transition-colors duration-300">
+                <p className="text-muted-foreground leading-relaxed">
                   {reason.description}
                 </p>
-
-                {/* Corner Accent */}
-                <div className="absolute top-4 right-4 w-3 h-3 bg-[#0C2C8A] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200" />
               </div>
             </div>
           ))}

@@ -1,6 +1,5 @@
 import { UserPlus, Settings, Rocket, TrendingUp } from "lucide-react";
 import Container from "../ui/container";
-import Link from "next/link";
 
 const steps = [
   {
@@ -25,107 +24,49 @@ const steps = [
   },
 ];
 
-const StepCard = ({ step, index, isLast }: { step: typeof steps[number]; index: number; isLast: boolean }) => (
-  <div
-    className="relative animate-fade-in"
-    style={{ animationDelay: `${index * 100}ms`, animationFillMode: "both" }}
-  >
-    {/* Connector line (only for large screens and if not last step) */}
-    {!isLast && (
-      <div className="hidden lg:block absolute top-8 left-[108%] w-[93%] h-0.5 bg-gradient-to-r from-primary to-transparent -translate-x-1/2" />
-    )}
-
-    <div className="text-center lg:text-left">
-      {/* Mobile View - Single Row Layout */}
-      <div className="lg:hidden flex items-start gap-4 mb-4 p-4 bg-card rounded-xl border border-border">
-        {/* Step number */}
-        <div
-          className="flex-shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 
-            text-primary font-bold text-base shadow-sm border border-primary/20"
-          aria-label={`Step ${index + 1}`}
-        >
-          {index + 1}
-        </div>
-
-        {/* Content Container */}
-        <div className="flex-1">
-          {/* Icon and Title Row */}
-          <div className="flex items-center gap-3 mb-2">
-            <div
-              className="w-8 h-8 rounded-lg bg-primary/5 border border-primary/10 flex items-center justify-center flex-shrink-0"
-              aria-hidden="true"
-            >
-              <step.icon className="w-4 h-4 text-primary" />
-            </div>
-            <h3 className="text-base font-semibold text-left flex-1">{step.title}</h3>
-          </div>
-          
-          {/* Description */}
-          <p className="text-muted-foreground text-xs text-left leading-relaxed">
-            {step.description}
-          </p>
-        </div>
-      </div>
-
-      {/* Desktop View - Original Layout */}
-      <div className="hidden lg:block text-center px-2 sm:px-4">
-        {/* Step number */}
-        <div
-          className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 
-            text-primary font-bold text-2xl mb-6 shadow-sm border border-primary/20"
-          aria-label={`Step ${index + 1}`}
-        >
-          {index + 1}
-        </div>
-
-        {/* Icon */}
-        <div
-          className="w-16 h-16 rounded-xl bg-card border border-border flex items-center justify-center mx-auto mb-4"
-          aria-hidden="true"
-        >
-          <step.icon className="w-8 h-8 text-primary" />
-        </div>
-
-        {/* Content */}
-        <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-        <p className="text-muted-foreground text-sm">{step.description}</p>
-      </div>
-    </div>
-  </div>
-);
-
 const HowItWorks = () => {
   return (
-    <section className="  ">
-     <Container>
-     <div className="">
+    <section className="relative overflow-hidden">
+      <Container>
         {/* Section Heading */}
-        <header className="text-center  mx-auto mb-8 lg:mb-16 animate-fade-in-up">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            <Link href="/contact">Get Started in{" "}
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        <div className="text-center mb-8 lg:mb-10">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3">
+            Get Started in{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-600 to-secondary">
               4 Simple Steps
             </span>
-            </Link>
           </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-muted-foreground">
+          <p className="text-base text-muted-foreground max-w-2xl mx-auto">
             From signup to success, we've made it incredibly easy to transform your business.
           </p>
-        </header>
+        </div>
 
         {/* Steps Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {steps.map((step, index) => (
-            <StepCard
+            <div
               key={index}
-              step={step}
-              index={index}
-              isLast={index === steps.length - 1}
-            />
+              className="text-center"
+            >
+              {/* Step Number and Icon Combined */}
+              <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <step.icon className="w-7 h-7 text-primary" />
+              </div>
+
+              {/* Content */}
+              <div className="mb-2">
+                <span className="text-sm font-medium text-primary mr-2">{index + 1}.</span>
+                <h3 className="text-lg font-semibold inline">
+                  {step.title}
+                </h3>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                {step.description}
+              </p>
+            </div>
           ))}
         </div>
-      </div>
-     </Container>
+      </Container>
     </section>
   );
 };

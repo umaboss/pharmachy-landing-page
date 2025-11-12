@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import { Calendar, CheckCircle, AlertCircle, TrendingUp, Users, Target, Award, Lightbulb } from "lucide-react";
 import { Card, CardContent } from "@/app/components/ui/card";
 import { Badge } from "@/app/components/ui/badge";
+import { Button } from "@/app/components/ui/button";
 import Container from "../components/ui/container";
 import Loading from "../components/ui/loading";
 import Link from "next/link";
@@ -895,14 +896,12 @@ const Updates = () => {
             Join thousands of businesses that trust Zapeera to manage their operations
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 px-8 py-3 rounded-full font-semibold transition-colors">
-              <Link href="/contact">Start Free Trial</Link>
-            </button>
-            <Link href="/about">
-              <button className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 py-3 rounded-full font-semibold transition-colors w-full sm:w-auto">
-                Learn More
-              </button>
-            </Link>
+            <Button className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 px-8 py-3 rounded-full font-semibold transition-colors" asChild>
+              <Link href="/contact-us">Start Free Trial</Link>
+            </Button>
+            <Button className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 py-3 rounded-full font-semibold transition-colors w-full sm:w-auto" asChild>
+              <Link href="/about-us">Learn More</Link>
+            </Button>
           </div>
         </div>
       </div>

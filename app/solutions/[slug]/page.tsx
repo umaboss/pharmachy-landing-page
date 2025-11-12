@@ -1043,8 +1043,8 @@ export default function SolutionPage({ params }: SolutionPageProps) {
                       </li>
                     ))}
                   </ul>
-                  <Button className={`w-full ${(plan as any).popular ? 'bg-primary hover:bg-primary/90' : 'bg-secondary hover:bg-secondary/90'}`}>
-                    <Link href="/contact">Get Started</Link>
+                  <Button className={`w-full ${(plan as any).popular ? 'bg-primary hover:bg-primary/90' : 'bg-secondary hover:bg-secondary/90'}`} asChild>
+                    <Link href="/contact-us">Get Started</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -1063,11 +1063,11 @@ export default function SolutionPage({ params }: SolutionPageProps) {
             Join thousands of {solution.industry.toLowerCase()} businesses that trust Zapeera to manage their operations
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 px-8 py-3 rounded-full font-semibold">
-              <Link href="/contact">Start Free Trial</Link>
+            <Button className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 px-8 py-3 rounded-full font-semibold" asChild>
+              <Link href="/contact-us">Start Free Trial</Link>
             </Button>
-            <Button className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 py-3 rounded-full font-semibold">
-              <Link href="/contact">Contact Sales</Link>
+            <Button className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 py-3 rounded-full font-semibold" asChild>
+              <Link href="/contact-us">Contact Sales</Link>
             </Button>
           </div>
         </div>

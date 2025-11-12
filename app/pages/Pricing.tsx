@@ -236,7 +236,7 @@ const Pricing = memo(() => {
                 <Link href="/#faq">View FAQs</Link>
               </Button>
               <Button size="lg" className="bg-gradient-primary hover:opacity-90" asChild>
-                <Link href="/contact">Contact Sales</Link>
+                <Link href="/contact-us">Contact Sales</Link>
               </Button>
             </div>
           </div>

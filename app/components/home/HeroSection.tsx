@@ -92,16 +92,20 @@ const HeroSection = () => {
             <Button
               size="lg"
               className="bg-gradient-to-r from-primary to-secondary text-white shadow-lg hover:shadow-xl transition-all duration-300 group"
+              asChild
             >
-              <Link href="/contact">Start Free Trial</Link>
-              <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+              <Link href="/contact-us">
+                Start Free Trial
+                <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+              </Link>
             </Button>
           <Button
             size="lg"
             variant="outline"
             className="group border-2  border-border hover:border-primary/50"
+            asChild
           >
-            <Link href="/about" className="flex items-center"> 
+            <Link href="/about-us" className="flex items-center"> 
               <Play className="w-5 h-5 mr-2" />
               Learn More
             </Link>

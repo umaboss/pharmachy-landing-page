@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contact Us - Get in Touch with Zapeera',
     description: 'Contact Zapeera for business management solutions. Get support, schedule a demo, or start your free trial. Our team is here to help your business grow.',
-    url: 'https://zapeera.com/contact',
+    url: 'https://zapeera.com/contact-us',
     siteName: 'Zapeera',
     type: 'website',
     locale: 'en_US',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     creator: '@zapeera',
   },
   alternates: {
-    canonical: 'https://zapeera.com/contact',
+    canonical: 'https://zapeera.com/contact-us',
   },
   robots: {
     index: true,

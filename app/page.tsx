@@ -104,6 +104,10 @@ const SolutionsSection = dynamic(() => import("@/app/components/home/SolutionsSe
   loading: () => <div className="h-96 bg-muted/30 animate-pulse rounded-lg" />
 });
 
+const AboutSection = dynamic(() => import("@/app/components/home/AboutSection"), {
+  loading: () => <div className="h-96 bg-muted/30 animate-pulse rounded-lg" />
+});
+
 export default function Home() {
   return (
     <>
@@ -122,6 +126,7 @@ export default function Home() {
               <FeaturesOverview />
               <HowItWorks />
               <WhyChooseUs />
+              <AboutSection />
               <PricingSection />
               <Testimonials />
               <FAQSection />

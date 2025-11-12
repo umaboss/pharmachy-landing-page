@@ -152,17 +152,19 @@ const PricingSection = ({ showHeading = true }: PricingSectionProps) => {
               </div>
 
               {/* Button */}
-              <Link href="/contact" className="block w-full" onClick={(e) => e.stopPropagation()}>
-                <Button
-                  className={`w-full mb-6 py-3 rounded-lg text-white font-semibold transition-all ${
-                    selectedPlan === index
-                      ? "bg-[#0C2C8A] hover:bg-[#0a256f]"
-                      : "bg-gray-100 hover:bg-gray-200 text-black"
-                  }`}
-                >
+              <Button
+                className={`w-full mb-6 py-3 rounded-lg text-white font-semibold transition-all ${
+                  selectedPlan === index
+                    ? "bg-[#0C2C8A] hover:bg-[#0a256f]"
+                    : "bg-gray-100 hover:bg-gray-200 text-black"
+                }`}
+                asChild
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Link href="/contact-us">
                   {plan.monthlyPrice ? "Start Free Trial" : "Contact Sales"}
-                </Button>
-              </Link>
+                </Link>
+              </Button>
 
               {/* Features List */}
               <ul className="space-y-3">

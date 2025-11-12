@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import Navigation from "../../app/components/Navigation";
-import Footer from "../../app/components/Footer";
-import About from "../../app/pages/About";
+import Navigation from "@/app/components/Navigation";
+import Footer from "@/app/components/Footer";
+import About from "@/app/pages/About";
 
 export const metadata: Metadata = {
   title: 'About Us - Zapeera',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About Us - Zapeera',
     description: 'Learn about Zapeera - our mission, vision, team, and commitment to transforming business management.',
-    url: 'https://zapeera.com/about',
+    url: 'https://zapeera.com/about-us',
     siteName: 'Zapeera',
     type: 'website',
     locale: 'en_US',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     creator: '@zapeera',
   },
   alternates: {
-    canonical: 'https://zapeera.com/about',
+    canonical: 'https://zapeera.com/about-us',
   },
   robots: {
     index: true,

@@ -8,6 +8,7 @@ import { ReactQueryProvider } from './providers'
 import Loading from './components/ui/loading'
 import PerformanceMonitor from './components/PerformanceMonitor'
 import GoogleVerification from './components/GoogleVerification'
+import GoogleAnalytics from './components/GoogleAnalytics'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -95,6 +96,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
+        <GoogleAnalytics />
         <GoogleVerification />
         <ReactQueryProvider>
           <TooltipProvider>

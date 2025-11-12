@@ -18,12 +18,14 @@ const CTASection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <Button size="lg" className="bg-gradient-primary hover:opacity-90 group">
-              <Link href="/contact">Start Free Trial</Link>
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            <Button size="lg" className="bg-gradient-primary hover:opacity-90 group" asChild>
+              <Link href="/contact-us">
+                Start Free Trial
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </Button>
-            <Button size="lg" variant="outline">
-              <Link href="/contact">Schedule a Demo</Link>
+            <Button size="lg" variant="outline" asChild>
+              <Link href="/contact-us">Schedule a Demo</Link>
             </Button>
           </div>
         </div>

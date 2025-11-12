@@ -111,9 +111,9 @@ const Navigation = () => {
     { name: "Pricing", path: "/pricing" },
     { name: "Blogs", path: "/blogs" },
     { name: "Updates", path: "/product-update" },
-    { name: "About", path: "/about" },
+    { name: "About Us", path: "/about-us" },
     { name: "Careers", path: "/careers" },
-    { name: "Contact", path: "/contact" },
+    { name: "Contact Us", path: "/contact-us" },
   ];
 
   return (
@@ -207,8 +207,8 @@ const Navigation = () => {
             {/* <Button variant="ghost" size="sm">
               Sign In
             </Button> */}
-            <Button size="sm" className="bg-gradient-primary hover:opacity-90 whitespace-nowrap">
-              <Link href="/contact">Start Free Trial</Link>
+            <Button size="sm" className="bg-gradient-primary hover:opacity-90 whitespace-nowrap" asChild>
+              <Link href="/contact-us">Start Free Trial</Link>
             </Button>
           </div>
 
@@ -303,9 +303,10 @@ const Navigation = () => {
                   <Button 
                     size="lg" 
                     className="w-full bg-gradient-primary hover:opacity-90 text-base sm:text-lg"
+                    asChild
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <Link href="/contact" className="w-full">Start Free Trial</Link>
+                    <Link href="/contact-us" className="w-full">Start Free Trial</Link>
                   </Button>
                 </div>
                 
