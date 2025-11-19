@@ -8,7 +8,7 @@ const CTASection = () => {
       {/* Background gradient */}
       <div className="absolute " />
       
-      <div className="container mx-auto px-4 lg:px-8 relative">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative">
         <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             Ready to Simplify Your Business?

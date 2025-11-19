@@ -123,8 +123,8 @@ const Navigation = () => {
         isScrolled ? "shadow-sm" : ""
       }`}
     >
-      <Container>
-      <div className="w-full">
+      <Container size="full" padding="none">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center group gap-2 sm:gap-2.5">

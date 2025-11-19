@@ -9,7 +9,8 @@ import Container from "../ui/container";
 const AboutSection = () => {
   return (
     <section className=" relative overflow-hidden">
-      <Container>
+      <Container size="full" padding="none">
+        <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Side - Image */}
           <div className="relative w-full h-[500px] lg:h-[600px] rounded-2xl overflow-hidden">
@@ -82,6 +83,7 @@ const AboutSection = () => {
               </Button>
             </div>
           </div>
+        </div>
         </div>
       </Container>
     </section>

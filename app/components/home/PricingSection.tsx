@@ -80,8 +80,8 @@ const PricingSection = ({ showHeading = true }: PricingSectionProps) => {
 
   return (
     <section className="">
-     <Container>
-     <div className="">
+     <Container size="full" padding="none">
+     <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         {/* Header Section */}
         {showHeading && (
           <div className="text-center max-w-3xl mx-auto mb-12">

@@ -27,7 +27,8 @@ const steps = [
 const HowItWorks = () => {
   return (
     <section className="relative overflow-hidden">
-      <Container>
+      <Container size="full" padding="none">
+        <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         {/* Section Heading */}
         <div className="text-center mb-8 lg:mb-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3">
@@ -65,6 +66,7 @@ const HowItWorks = () => {
               </p>
             </div>
           ))}
+        </div>
         </div>
       </Container>
     </section>

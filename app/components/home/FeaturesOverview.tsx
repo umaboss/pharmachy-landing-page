@@ -79,7 +79,8 @@ const FeaturesOverview = () => {
 
   return (
     <section className=" relative overflow-hidden">
-      <Container>
+      <Container size="full" padding="none">
+        <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         {/* Header */}
         <div className="text-center mb-10 lg:mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3">
@@ -149,6 +150,7 @@ const FeaturesOverview = () => {
               <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </Button>
+        </div>
         </div>
       </Container>
     </section>

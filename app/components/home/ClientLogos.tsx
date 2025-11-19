@@ -15,7 +15,7 @@ const ClientLogos = () => {
 
   return (
     <section className="py-12 border-y border-border bg-muted/20">
-      <div className="">
+      <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         <p className="text-center text-sm text-muted-foreground mb-8 font-medium tracking-wide">
           TRUSTED BY LEADING BUSINESSES
         </p>

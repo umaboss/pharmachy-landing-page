@@ -50,7 +50,8 @@ const SolutionsSection = () => {
 
   return (
     <section className="pt-20 lg:pt-32 relative overflow-hidden">
-      <Container>
+      <Container size="full" padding="none">
+        <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         {/* Header */}
         <div className="text-center mb-16 lg:mb-20">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
@@ -158,6 +159,7 @@ const SolutionsSection = () => {
               </Card>
             </Link>
           ))}
+        </div>
         </div>
       </Container>
     </section>
