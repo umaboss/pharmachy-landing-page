@@ -121,17 +121,15 @@ export default function Home() {
           <main>
             <HeroSection />
             <ClientLogos />
-            <div className=" flex flex-col md:gap-40 gap-20">
-              <SolutionsSection />
-              <FeaturesOverview />
-              <HowItWorks />
-              <WhyChooseUs />
-              <AboutSection />
-              <PricingSection />
-              <Testimonials />
-              <FAQSection />
-              <CTASection />
-            </div>
+            <AboutSection />
+            <FeaturesOverview />
+            <WhyChooseUs />
+            <SolutionsSection />
+            <HowItWorks />
+            <PricingSection />
+            <Testimonials />
+            <FAQSection />
+            <CTASection />
           </main>
           <Footer />
         </div>

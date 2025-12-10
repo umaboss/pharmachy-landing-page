@@ -79,7 +79,7 @@ const PricingSection = ({ showHeading = true }: PricingSectionProps) => {
   ];
 
   return (
-    <section className="">
+    <section className="py-12 lg:py-16 bg-white">
      <Container size="full" padding="none">
      <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         {/* Header Section */}

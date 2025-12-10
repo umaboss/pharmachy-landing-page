@@ -1,6 +1,4 @@
 "use client";
-import { useState, useEffect, useMemo } from "react";
-import { ArrowRight, Play, Sparkles } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,143 +6,69 @@ import Container from "../ui/container";
 
 const HeroSection = () => {
 
-  // Image slider
-  const images = useMemo(() => [
-    "/images/pr.png",
-    "/images/admin.png",
-    "/images/POS.png",
-  ], []);
-
-  const [currentImage, setCurrentImage] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [images.length]);
-
   return (
-    <section className="relative min-h-[90vh] sm:min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-background via-background to-muted/30">
-      {/* Background decorative elements */}
+    <section className="relative min-h-screen flex mt-[100px] flex-col items-center overflow-hidden bg-white">
+      {/* Subtle texture background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.03)_1px,transparent_0)] bg-[length:20px_20px]"></div>
+      
+      {/* Soft gradient effects in corners */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/3 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#29CDCF]/8 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#1947C4]/8 rounded-full blur-3xl"></div>
       </div>
 
-      <Container className="relative z-10" size="full" padding="none">
+      <Container className="relative z-10" size="xl" padding="none">
         <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center py-20 sm:py-24 lg:py-32">
-          {/* Left Content */}
-          <div className="text-center lg:text-left space-y-8">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">All-in-One Business Solution</span>
-            </div>
-
-            {/* Main Heading */}
-            <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                Run Your Business
-                <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-secondary">
-                  Smarter & Faster
-                </span>
+          <div className="flex flex-col items-center justify-center pt-20 pb-12 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-20">
+            {/* Centered Content */}
+            <div className="text-center max-w-4xl mx-auto mb-12 lg:mb-16">
+              {/* Main Heading */}
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-gray-900 font-poppins mb-6 lg:mb-8">
+                Run Your Entire Business in One Platform
               </h1>
               
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                Manage sales, inventory, staff, and reports — all in one smart dashboard built to
-                grow with your business.
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-sans font-normal mb-8 lg:mb-10">
+                POS, inventory, multi-branch management, and real-time analytics—all unified. 
+                Trusted by <span className="font-semibold text-gray-900">5,000+ businesses</span> across Pakistan.
               </p>
-            </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-primary to-secondary text-white shadow-lg hover:shadow-xl transition-all duration-300 group text-base px-8 py-6"
-                asChild
-              >
-                <Link href="/contact-us">
-                  Start Free Trial
-                  <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="group border-2 border-border hover:border-primary/50 text-base px-8 py-6"
-                asChild
-              >
-                <Link href="/about-us" className="flex items-center">
-                  <Play className="w-5 h-5 mr-2" />
-                  Watch Demo
-                </Link>
-              </Button>
-            </div>
-
-            {/* Stats or Features */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border/50">
-              <div className="text-center lg:text-left">
-                <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">5,000+</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Active Businesses</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">99.9%</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Uptime</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">24/7</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Support</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Image Section */}
-          <div className="relative lg:h-[700px] h-[450px] sm:h-[550px] flex items-center justify-center w-full">
-            {/* Main Image with Fade Transition */}
-            <div className="relative w-full h-full">
-              {images.map((img, i) => (
-                <div
-                  key={i}
-                  className={`absolute inset-0 transition-opacity duration-1000 ${
-                    i === currentImage ? "opacity-100 z-10" : "opacity-0 z-0"
-                  }`}
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-[#29CDCF] to-[#1947C4] hover:opacity-90 text-white shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 rounded-full font-semibold"
+                  asChild
                 >
-                  <div className="relative w-full h-full overflow-hidden">
-                    <Image
-                      src={img}
-                      alt={`Business Management Solution ${i + 1}`}
-                      fill
-                      className="object-contain"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-                      priority={i === 0}
-                      quality={90}
-                    />
-                  </div>
-                </div>
-              ))}
+                  <Link href="/contact-us">
+                    Start Free Trial
+                  </Link>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-white border-2 border-gray-300 hover:border-[#1947C4] hover:text-white hover:bg-gradient-to-r hover:from-[#29CDCF] hover:to-[#1947C4] text-gray-700 text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 rounded-full font-semibold shadow-sm hover:shadow-lg transition-all duration-300"
+                  asChild
+                >
+                  <Link href="/about-us">
+                    How It Works
+                  </Link>
+                </Button>
+              </div>
             </div>
 
-            {/* Image Indicator Dots */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-30">
-              {images.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentImage(i)}
-                  className={`transition-all duration-300 rounded-full ${
-                    i === currentImage
-                      ? "w-8 h-2 bg-primary"
-                      : "w-2 h-2 bg-border hover:bg-primary/50"
-                  }`}
-                  aria-label={`Go to image ${i + 1}`}
+            {/* Dashboard Image */}
+            <div className="w-full max-w-5xl mx-auto">
+              <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
+                <Image 
+                  src="/images/dashboard.png" 
+                  alt="Dashboard Preview" 
+                  fill
+                  className="object-contain"
+                  priority
                 />
-              ))}
+              </div>
             </div>
           </div>
-        </div>
         </div>
       </Container>
     </section>

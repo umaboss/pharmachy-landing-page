@@ -161,7 +161,7 @@ const FAQSection = () => {
   });
 
   return (
-    <section className="relative overflow-hidden bg-white">
+    <section className="relative overflow-hidden py-12 lg:py-16 bg-white">
       <Container className="relative z-10" size="full" padding="none">
         <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         {/* Header */}

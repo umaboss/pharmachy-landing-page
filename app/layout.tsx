@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
 import { Toaster } from "@/app/components/ui/toaster";
 import { Toaster as Sonner } from "@/app/components/ui/sonner";
@@ -10,7 +10,12 @@ import PerformanceMonitor from './components/PerformanceMonitor'
 import GoogleVerification from './components/GoogleVerification'
 import GoogleAnalytics from './components/GoogleAnalytics'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const poppins = Poppins({ 
+  subsets: ['latin'], 
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-poppins' 
+})
 
 export const metadata: Metadata = {
   title: {
@@ -95,7 +100,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className} suppressHydrationWarning>
+      <body className={`${inter.variable} ${poppins.variable} ${inter.className}`} suppressHydrationWarning>
         <GoogleAnalytics />
         <GoogleVerification />
         <ReactQueryProvider>

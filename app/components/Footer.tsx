@@ -39,7 +39,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-muted/30 border-t border-border">
-     <Container size="full" padding="none">
+     <Container size="xl" padding="none">
      <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12">
           {/* Brand Column */}

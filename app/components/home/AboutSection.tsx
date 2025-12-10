@@ -1,89 +1,64 @@
 'use client'
 
 import Image from "next/image";
-import { Button } from "@/app/components/ui/button";
 import { Check } from "lucide-react";
-import Link from "next/link";
 import Container from "../ui/container";
 
 const AboutSection = () => {
   return (
-    <section className=" relative overflow-hidden">
-      <Container size="full" padding="none">
+    <section className=" bg-white">
+      <Container size="xl" padding="none">
         <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Side - Image */}
-          <div className="relative w-full h-[500px] lg:h-[600px] rounded-2xl overflow-hidden">
-            <Image
-              src="/images/admin.png"
-              alt="About Zapeera"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
-
-          {/* Right Side - Content */}
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-                About{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-600 to-secondary">
-                  Zapeera
-                </span>
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Zapeera is a leading unified business management platform designed to transform how businesses operate. We provide comprehensive solutions that streamline operations, boost productivity, and drive growth.
-              </p>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Side - Image */}
+            <div className="relative w-full h-[400px] lg:h-[500px] xl:h-[600px] rounded-2xl overflow-hidden   ">
+              <Image
+                src="/images/dashboard.png"
+                alt="About Zapeera"
+                fill
+                className="object-contain shadow-2xl "
+                sizes="(max-width: 1024px) , "
+                priority
+              />
             </div>
 
-            {/* Key Points */}
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Check className="w-4 h-4 text-primary-foreground" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-foreground mb-1">Trusted by 5,000+ Businesses</h3>
-                  <p className="text-sm text-muted-foreground">Serving businesses across Pakistan and beyond with reliable, scalable solutions.</p>
-                </div>
+            {/* Right Side - Content */}
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 lg:mb-6">
+                  About Zapeera
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  Zapeera is a leading unified business management platform designed to transform how businesses operate. We provide comprehensive solutions that streamline operations, boost productivity, and drive growth.
+                </p>
               </div>
 
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Check className="w-4 h-4 text-primary-foreground" />
+              {/* Key Points */}
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#1947C4]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-3 h-3 text-[#1947C4]" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-1">Trusted by 5,000+ Businesses</h3>
+                    <p className="text-sm text-gray-600">Serving businesses across Pakistan and beyond with reliable, scalable solutions.</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-foreground mb-1">Industry-Leading Technology</h3>
-                  <p className="text-sm text-muted-foreground">Built with cutting-edge technology to ensure performance, security, and scalability.</p>
+
+ 
+
+                <div className="flex items-start gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#1947C4]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-3 h-3 text-[#1947C4]" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-1">Comprehensive Solutions</h3>
+                    <p className="text-sm text-gray-600">From POS systems to inventory management, we offer everything your business needs in one platform.</p>
+                  </div>
                 </div>
               </div>
-
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Check className="w-4 h-4 text-primary-foreground" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-foreground mb-1">Comprehensive Solutions</h3>
-                  <p className="text-sm text-muted-foreground">From POS systems to inventory management, we offer everything your business needs in one platform.</p>
-                </div>
-              </div>
-            </div>
-
-            {/* CTA Button */}
-            <div className="pt-4">
-              <Button 
-                size="lg"
-                className="bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 transition-all duration-300 rounded-lg"
-                asChild
-              >
-                <Link href="/about">
-                  Learn More About Us
-                </Link>
-              </Button>
             </div>
           </div>
-        </div>
         </div>
       </Container>
     </section>

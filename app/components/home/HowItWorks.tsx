@@ -1,72 +1,79 @@
-import { UserPlus, Settings, Rocket, TrendingUp } from "lucide-react";
 import Container from "../ui/container";
 
 const steps = [
   {
-    icon: UserPlus,
-    title: "Sign Up",
-    description: "Create your account in less than 2 minutes. No credit card required for trial.",
+    number: 1,
+    title: "Create Account",
+    description: "Sign up for a free trial to get started.",
   },
   {
-    icon: Settings,
-    title: "Configure",
-    description: "Set up your business details, add branches, and customize your workflow.",
+    number: 2,
+    title: "Configure Store",
+    description: "Customize your settings and preferences.",
   },
   {
-    icon: Rocket,
-    title: "Launch",
-    description: "Start processing sales, managing inventory, and running your business.",
+    number: 3,
+    title: "Add Products",
+    description: "Bulk upload or add your items individually.",
   },
   {
-    icon: TrendingUp,
-    title: "Keep Growing",
-    description: "Scale seamlessly with AI-powered insights and automated workflows.",
+    number: 4,
+    title: "Start Selling!",
+    description: "You're ready to welcome your first customers.",
   },
 ];
 
 const HowItWorks = () => {
   return (
-    <section className="relative overflow-hidden">
-      <Container size="full" padding="none">
+    <section className="relative overflow-hidden py-12 lg:py-16 bg-white">
+      <Container size="xl" padding="none">
         <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-        {/* Section Heading */}
-        <div className="text-center mb-8 lg:mb-10">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3">
-            Get Started in{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-600 to-secondary">
-              4 Simple Steps
-            </span>
-          </h2>
-          <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-            From signup to success, we've made it incredibly easy to transform your business.
-          </p>
-        </div>
+          {/* Section Heading */}
+          <div className="text-center mb-10 lg:mb-12">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 lg:mb-6">
+              Go Live in Minutes
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Our streamlined onboarding process means you can set up your store and start selling in just a few simple steps. No technical skills required.
+            </p>
+          </div>
 
-        {/* Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {steps.map((step, index) => (
-            <div
-              key={index}
-              className="text-center"
-            >
-              {/* Step Number and Icon Combined */}
-              <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <step.icon className="w-7 h-7 text-primary" />
-              </div>
+          {/* Steps Timeline */}
+          <div className="relative">
+            {/* Connecting Line */}
+            <div className="hidden lg:block absolute top-8 left-0 right-0 h-0.5 bg-gray-200" style={{ top: '2rem' }}></div>
+            
+            {/* Steps Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
+              {steps.map((step, index) => (
+                <div
+                  key={index}
+                  className="relative text-center"
+                >
+                  {/* Step Number Circle */}
+                  <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 relative z-10 ${
+                    index === 0 
+                      ? "bg-[#1947C4] border-2 border-[#1947C4]/30" 
+                      : "bg-gray-100 border-2 border-gray-200"
+                  }`}>
+                    <span className={`text-xl font-bold ${
+                      index === 0 ? "text-white" : "text-gray-400"
+                    }`}>
+                      {step.number}
+                    </span>
+                  </div>
 
-              {/* Content */}
-              <div className="mb-2">
-                <span className="text-sm font-medium text-primary mr-2">{index + 1}.</span>
-                <h3 className="text-lg font-semibold inline">
-                  {step.title}
-                </h3>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                {step.description}
-              </p>
+                  {/* Content */}
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    {step.description}
+                  </p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
         </div>
       </Container>
     </section>

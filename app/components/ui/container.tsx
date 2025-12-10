@@ -16,7 +16,7 @@ const Container = ({
   const sizeClasses = {
     sm: "max-w-4xl",
     md: "max-w-5xl", 
-    lg: "max-w-7xl",
+    lg: "max-w-6xl",
     xl: "max-w-7xl",
     full: "max-w-full"
   };
@@ -25,7 +25,7 @@ const Container = ({
     none: "",
     sm: "px-4 sm:px-6",
     md: "px-4 sm:px-6 lg:px-8",
-    lg: "px-4 sm:px-6 lg:px-12"
+    lg: "px-4 sm:px-6 lg:px-10 xl:px-12"
   };
 
   return (
