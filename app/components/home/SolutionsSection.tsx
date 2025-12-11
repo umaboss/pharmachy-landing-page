@@ -1,35 +1,35 @@
 'use client'
 
-import { Store, UtensilsCrossed, Scissors, Wrench } from "lucide-react";
+import Image from "next/image";
 import Container from "../ui/container";
 
 const SolutionsSection = () => {
 
   const solutions = [
     {
-      icon: Store,
-      title: "Retail",
-      description: "Manage inventory, process sales, and connect with customers seamlessly.",
+      title: "Inventory Management",
+      description: "track stock levels in real-time and manage your suppliers, and automate purchasing.",
+      image: "/images/Retail POS.jpeg",
     },
     {
-      icon: UtensilsCrossed,
-      title: "Restaurant",
-      description: "Handle orders, manage tables, and streamline kitchen operations with ease.",
+      title: "Point of Sale",
+      description: "Process sales, manage customers, and streamline your business operations with ease.",
+      image: "/images/business.webp",
     },
     {
-      icon: Scissors,
-      title: "Salon",
-      description: "Book appointments, manage clients, and process payments all in one place.",
+      title: "Reports & Analytics",
+      description: "Get insights into your business performance and make data-driven decisions.",
+      image: "/images/staff.jpeg",
     },
     {
-      icon: Wrench,
-      title: "Services",
-      description: "Schedule jobs, send invoices, and manage your mobile workforce efficiently.",
+      title: "Employee Management",
+      description: "Manage your team, track their performance, and streamline your business operations.",
+      image: "/images/smart_invoice.jpeg",
     },
   ];
 
   return (
-    <section className="py-12 lg:py-16 bg-white">
+    <section className="py-12 lg:py-16 bg-gradient-to-br from-[#26D2C6]/10 via-white to-[#1C22AA]/10">
       <Container size="xl" padding="none">
         <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           {/* Header */}
@@ -47,15 +47,20 @@ const SolutionsSection = () => {
             {solutions.map((solution, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-[#1947C4]/50 hover:shadow-md transition-all duration-300"
+                className="bg-white h-full rounded-2xl p-3 border border-gray-200 hover:border-[#1947C4]/50 hover:shadow-md transition-all duration-300 flex flex-col"
               >
-                {/* Icon */}
-                <div className="w-16 h-16 rounded-full bg-[#29CDCF]/20 flex items-center justify-center mb-4">
-                  <solution.icon className="w-8 h-8 text-[#1947C4]" />
+                {/* Image */}
+                <div className="relative w-full h-32 rounded-lg mb-4 overflow-hidden">
+                  <Image
+                    src={solution.image}
+                    alt={solution.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-lg font-bold text-gray-900 mb-1">
                   {solution.title}
                 </h3>
                 <p className="text-sm text-gray-600 leading-relaxed">

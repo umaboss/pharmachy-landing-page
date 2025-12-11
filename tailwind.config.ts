@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
         poppins: ['var(--font-poppins)', 'system-ui', '-apple-system', 'sans-serif'],
+        montserrat: ['var(--font-montserrat)', 'system-ui', '-apple-system', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

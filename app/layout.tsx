@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Poppins } from 'next/font/google'
+import { Inter, Poppins, Montserrat } from 'next/font/google'
 import './globals.css'
 import { Toaster } from "@/app/components/ui/toaster";
 import { Toaster as Sonner } from "@/app/components/ui/sonner";
@@ -15,6 +15,11 @@ const poppins = Poppins({
   subsets: ['latin'], 
   weight: ['400', '500', '600', '700', '800', '900'],
   variable: '--font-poppins' 
+})
+const montserrat = Montserrat({ 
+  subsets: ['latin'], 
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-montserrat' 
 })
 
 export const metadata: Metadata = {
@@ -100,7 +105,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${poppins.variable} ${inter.className}`} suppressHydrationWarning>
+      <body className={`${inter.variable} ${poppins.variable} ${montserrat.variable} ${inter.className} bg-gradient-to-br from-[#26D2C6]/5 via-white to-[#1C22AA]/5`} suppressHydrationWarning>
         <GoogleAnalytics />
         <GoogleVerification />
         <ReactQueryProvider>

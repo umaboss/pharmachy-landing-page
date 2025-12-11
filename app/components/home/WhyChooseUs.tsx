@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Zap, Lock, Headphones, TrendingUp, Globe, Award, Shield, Clock, BarChart, Users } from "lucide-react";
 import Container from "../ui/container";
 
@@ -10,79 +11,82 @@ const WhyChooseUs = () => {
   const tabContent = {
     Performance: {
       title: "Lightning-Fast Performance",
-      description: "Experience unmatched speed and efficiency with our optimized platform designed to handle high-volume operations seamlessly.",
+      description: "Experience unmatched speed and efficiency with our optimized platform.",
+      image: "/images/performance.jpeg",
       features: [
         {
           icon: Zap,
           title: "Lightning Fast",
-          description: "Built for speed with optimized performance that keeps your business running smoothly even during peak hours.",
+          description: "Built for speed with optimized performance.",
         },
         {
           icon: Clock,
           title: "Real-Time Sync",
-          description: "Instant data synchronization across all your locations and devices for up-to-the-minute accuracy.",
+          description: "Instant data synchronization across all locations.",
         },
         {
           icon: BarChart,
           title: "Advanced Analytics",
-          description: "Get instant insights with powerful reporting tools that help you make data-driven decisions faster.",
+          description: "Get instant insights with powerful reporting tools.",
         },
         {
           icon: TrendingUp,
           title: "Scale with Ease",
-          description: "Whether you have 1 location or 100, Zapeera grows with your business without any performance compromise.",
+          description: "Grows with your business without performance compromise.",
         },
       ],
     },
     Security: {
       title: "Enterprise-Grade Security",
-      description: "Your business data is protected with bank-level security measures and compliance standards to ensure complete peace of mind.",
+      description: "Your business data is protected with bank-level security measures.",
+      image: "/images/security.jpeg",
       features: [
         {
           icon: Lock,
           title: "Bank-Level Security", 
-          description: "Your data is protected with enterprise-grade encryption and regular security audits to ensure complete safety.",
+          description: "Enterprise-grade encryption and regular security audits.",
         },
         {
           icon: Shield,
           title: "Data Protection",
-          description: "Advanced security protocols and regular backups ensure your critical business data is always safe and recoverable.",
+          description: "Advanced security protocols and regular backups.",
         },
         {
           icon: Users,
           title: "Role-Based Access",
-          description: "Control who sees what with granular permission settings that protect sensitive information.",
+          description: "Control who sees what with granular permissions.",
         },
         {
           icon: Award,
           title: "Compliance Ready",
-          description: "Meet industry standards and regulations with built-in compliance features for your peace of mind.",
+          description: "Meet industry standards with built-in compliance.",
         },
       ],
     },
     Support: {
       title: "24/7 Expert Support",
-      description: "Get the help you need whenever you need it with our dedicated support team committed to your success.",
+      description: "Get the help you need whenever you need it with our dedicated team.",
+      image: "/images/support.jpeg",
       features: [
         {
           icon: Headphones,
           title: "24/7 Support",
-          description: "Our dedicated support team is always available to help you succeed, whenever you need assistance.",
+          description: "Always available to help you succeed.",
         },
         {
           icon: Globe,
           title: "Access Anywhere",
-          description: "Cloud-based platform accessible from any device, allowing you to manage your business on the go.",
+          description: "Cloud-based platform accessible from any device.",
         },
         {
           icon: Users,
           title: "Expert Guidance",
-          description: "Get personalized assistance from our team of experts who understand your business needs.",
+          description: "Personalized assistance from our team of experts.",
         },
         {
           icon: Award,
           title: "Industry Leader",
-          description: "Trusted by thousands of businesses worldwide with proven track record of driving growth and efficiency.",
+          description: "Trusted by thousands of businesses worldwide.",
         },
       ],
     },
@@ -127,34 +131,55 @@ const WhyChooseUs = () => {
             </div>
           </div>
 
-          {/* Features Grid - Horizontal Layout */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {activeContent.features.map((feature, index) => {
-              const stepNumber = String(index + 1).padStart(2, '0');
-              return (
-                <div 
-                  key={index} 
-                  className="group relative p-[2px] rounded-[250px] bg-gray-200 hover:bg-gradient-to-r hover:from-[#29CDCF] hover:to-[#1947C4] transition-all duration-300"
-                >
-                  <div className="flex items-center justify-center flex-col py-[40px] px-8 lg:py-[60px] lg:px-10 bg-white rounded-[250px] h-full">
+          {/* Content with Image Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left Side - Content */}
+            <div className="space-y-4">
+              {/* Title */}
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
+                {activeContent.title}
+              </h3>
+              
+              {/* Description */}
+              <p className="text-base text-gray-600 leading-relaxed">
+                {activeContent.description}
+              </p>
+
+              {/* Features Grid - 2x2 */}
+              <div className="grid grid-cols-2 gap-6 mt-6">
+                {activeContent.features.map((feature, index) => (
+                  <div
+                    key={index}
+                    className="p-0"
+                  >
                     {/* Icon */}
-                    <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 flex-shrink-0">
-                      <feature.icon className="w-8 h-8 text-[#1947C4] group-hover:text-[#1947C4]" strokeWidth={2} />
+                    <div className="w-10 h-10 rounded-lg bg-[#1947C4]/10 flex items-center justify-center mb-2">
+                      <feature.icon className="w-5 h-5 text-[#1947C4]" strokeWidth={2} />
                     </div>
                     
                     {/* Title */}
-                    <h3 className="text-xl text-center lg:text-xl font-bold text-gray-900 mb-3">
+                    <h4 className="text-sm font-bold text-gray-900 mb-1">
                       {feature.title}
-                    </h3>
+                    </h4>
                     
                     {/* Description */}
-                    <p className="text-sm text-center lg:text-base text-gray-600 leading-relaxed">
+                    <p className="text-xs text-gray-600 leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
-                </div>
-              );
-            })}
+                ))}
+              </div>
+            </div>
+
+            {/* Right Side - Image */}
+            <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden">
+              <Image
+                src={activeContent.image}
+                alt={activeContent.title}
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </Container>

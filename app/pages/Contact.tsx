@@ -110,8 +110,8 @@ const Contact = memo(() => {
                     <div>
                       <h3 className="font-semibold mb-1">Email</h3>
                       <p className="text-sm text-muted-foreground mb-2">Our team is here to help</p>
-                      <a href="mailto:support@zapeera.com" className="text-primary hover:underline">
-                        support@zapeera.com
+                      <a href="mailto:zapeera@gmail.com" className="text-primary hover:underline">
+                        zapeera@gmail.com
                       </a>
                     </div>
                   </div>
@@ -125,8 +125,8 @@ const Contact = memo(() => {
                     <div>
                       <h3 className="font-semibold mb-1">Phone</h3>
                       <p className="text-sm text-muted-foreground mb-2">Mon-Fri from 8am to 5pm</p>
-                      <a href="tel:+11234567890" className="text-primary hover:underline">
-                        +1 (123) 456-7890
+                      <a href="tel:+923107100663" className="text-primary hover:underline">
+                        +92 310 7100663
                       </a>
                     </div>
                   </div>
@@ -155,9 +155,9 @@ const Contact = memo(() => {
                     <div>
                       <h3 className="font-semibold mb-1">Office</h3>
                       <p className="text-sm text-muted-foreground">
-                        123 Business Street<br />
-                        San Francisco, CA 94102<br />
-                        United States
+                        Ayan Center<br />
+                        Eden City, DHA Phase 8<br />
+                        Lahore, Pakistan
                       </p>
                     </div>
                   </div>

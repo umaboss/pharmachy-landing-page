@@ -151,9 +151,7 @@ const Navigation = () => {
   return (
     <>
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "shadow-sm" : ""
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent `}
     >
       <Container size="xl" padding="none">
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-4">
@@ -238,19 +236,27 @@ const Navigation = () => {
               ))}
             </div>
 
-            {/* Quote Button - Right side, Dark pill with border */}
-            <div className="hidden lg:flex items-center z-10 flex-shrink-0 ml-auto">
+            {/* Login and Quote Buttons - Right side */}
+            <div className="hidden lg:flex items-center gap-3 z-10 flex-shrink-0 ml-auto">
               <Button 
+                size="sm" 
+                variant="outline"
+                asChild
+                className="bg-white border-gray-300 text-gray-700 hover:bg-gradient-to-r hover:from-[#29CDCF] hover:to-[#1947C4] hover:text-white hover:border-transparent whitespace-nowrap rounded-full px-5 font-medium text-sm transition-all duration-300" 
+              >
+                <Link href="/login">Login</Link>
+              </Button>
+              {/* <Button 
                 size="sm" 
                 variant="outline"
                 onClick={() => setIsQuoteModalOpen(true)}
                 className="bg-white border-gray-300 text-gray-700 hover:bg-gradient-to-r hover:from-[#29CDCF] hover:to-[#1947C4] hover:text-white hover:border-transparent whitespace-nowrap rounded-full px-5 font-medium text-sm transition-all duration-300" 
               >
                 Get A Free Quote
-              </Button>
+              </Button> */}
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button */}           
             <button
               className="lg:hidden p-2 -mr-2 flex-shrink-0 text-gray-700 z-10"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

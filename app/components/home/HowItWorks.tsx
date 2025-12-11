@@ -41,7 +41,7 @@ const HowItWorks = () => {
           {/* Steps Timeline */}
           <div className="relative">
             {/* Connecting Line */}
-            <div className="hidden lg:block absolute top-8 left-0 right-0 h-0.5 bg-gray-200" style={{ top: '2rem' }}></div>
+            <div className="hidden lg:block absolute top-8 h-0.5 bg-gray-200" style={{ top: '2rem', left: 'calc(12.5% + 32px)', right: 'calc(12.5% + 32px)' }}></div>
             
             {/* Steps Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
@@ -53,11 +53,11 @@ const HowItWorks = () => {
                   {/* Step Number Circle */}
                   <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 relative z-10 ${
                     index === 0 
-                      ? "bg-[#1947C4] border-2 border-[#1947C4]/30" 
-                      : "bg-gray-100 border-2 border-gray-200"
+                      ? "bg-[#E9FAF9] border-2 border-[#1947C4]/30" 
+                      : "bg-[#E9FAF9] border-2 border-[#1947C4]/30"
                   }`}>
                     <span className={`text-xl font-bold ${
-                      index === 0 ? "text-white" : "text-gray-400"
+                      index === 0 ? "text-black" : "text-black"
                     }`}>
                       {step.number}
                     </span>

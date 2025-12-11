@@ -79,15 +79,14 @@ const PricingSection = ({ showHeading = true }: PricingSectionProps) => {
   ];
 
   return (
-    <section className="py-12 lg:py-16 bg-white">
+    <section className="py-12 lg:py-16 bg-gradient-to-br from-[#26D2C6]/10 to-[white]/10">
      <Container size="full" padding="none">
      <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         {/* Header Section */}
         {showHeading && (
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Simple,{" "}
-              <span className="text-[#0C2C8A]">Transparent Pricing</span>
+              Simple,Transparent Pricing
             </h2>
             <p className="text-lg text-gray-600 mb-8">
               Choose the plan that's right for your business. All plans include a 14-day free trial.
@@ -153,11 +152,7 @@ const PricingSection = ({ showHeading = true }: PricingSectionProps) => {
 
               {/* Button */}
               <Button
-                className={`w-full mb-6 py-3 rounded-lg text-white font-semibold transition-all ${
-                  selectedPlan === index
-                    ? "bg-[#0C2C8A] hover:bg-[#0a256f]"
-                    : "bg-gray-100 hover:bg-gray-200 text-black"
-                }`}
+                className="w-full mb-6 py-3 rounded-lg text-white font-semibold transition-all bg-gradient-to-r from-[#29CDCF] to-[#1947C4] hover:opacity-90"
                 asChild
                 onClick={(e) => e.stopPropagation()}
               >
