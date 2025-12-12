@@ -7,7 +7,7 @@ import Container from "../ui/container";
 const HeroSection = () => {
 
   return (
-    <section className="relative min-h-[90vh] pt-[40px] sm:min-h-screen flex flex-col items-center overflow-hidden bg-gradient-to-br from-[#26D2C6]/10 via-white to-[#1C22AA]/10">
+    <section className="relative min-h-[90h] pt-[40px] sm:min-h-screen flex flex-col items-center overflow-hidden bg-gradient-to-br from-[#26D2C6]/10 via-white to-[#1C22AA]/10">
       {/* Subtle texture background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.03)_1px,transparent_0)] bg-[length:20px_20px]"></div>
       
@@ -35,8 +35,8 @@ const HeroSection = () => {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
                 <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-[#29CDCF] to-[#1947C4] hover:opacity-90 text-white shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base md:text-base lg:text-base xl:text-base 2xl:text-lg px-6 sm:px-8 md:px-8 lg:px-8 xl:px-8 2xl:px-10 py-5 sm:py-6 md:py-6 lg:py-6 xl:py-6 2xl:py-7 rounded-full font-semibold"
+                  size="default"
+                  className="bg-gradient-to-r from-[#29CDCF] to-[#1947C4] hover:opacity-90 text-white shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-sm md:text-sm lg:text-sm xl:text-sm 2xl:text-base px-4 sm:px-5 md:px-5 lg:px-5 xl:px-5 2xl:px-6 py-2.5 sm:py-2.5 md:py-2.5 lg:py-2.5 xl:py-2.5 2xl:py-3 rounded-full font-semibold"
                   asChild
                 >
                   <Link href="/contact-us">
@@ -44,9 +44,9 @@ const HeroSection = () => {
                   </Link>
                 </Button>
                 <Button
-                  size="lg"
+                  size="default"
                   variant="outline"
-                  className="bg-white border-2 border-gray-300 hover:border-[#1947C4] hover:text-white hover:bg-gradient-to-r hover:from-[#29CDCF] hover:to-[#1947C4] text-gray-700 text-sm sm:text-base md:text-base lg:text-base xl:text-base 2xl:text-lg px-6 sm:px-8 md:px-8 lg:px-8 xl:px-8 2xl:px-10 py-5 sm:py-6 md:py-6 lg:py-6 xl:py-6 2xl:py-7 rounded-full font-semibold shadow-sm hover:shadow-lg transition-all duration-300"
+                  className="bg-white border-2 border-gray-300 hover:border-[#1947C4] hover:text-white hover:bg-gradient-to-r hover:from-[#29CDCF] hover:to-[#1947C4] text-gray-700 text-sm sm:text-sm md:text-sm lg:text-sm xl:text-sm 2xl:text-base px-4 sm:px-5 md:px-5 lg:px-5 xl:px-5 2xl:px-6 py-2.5 sm:py-2.5 md:py-2.5 lg:py-2.5 xl:py-2.5 2xl:py-3 rounded-full font-semibold shadow-sm hover:shadow-lg transition-all duration-300"
                   asChild
                 >
                   <Link href="/about-us">
@@ -58,12 +58,12 @@ const HeroSection = () => {
 
             {/* Dashboard Image */}
             <div className="w-full max-w-4xl xl:max-w-5xl mx-auto mt-4 sm:mt-6 md:mt-8 lg:mt-8 xl:mt-8">
-              <div className="relative w-full aspect-video rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl">
+              <div className="relative w-full aspect-video  bg-transparent overflow-hidden ">
                 <Image 
-                  src="/images/dashboard.png" 
+                  src="/images/hero.jpeg" 
                   alt="Dashboard Preview" 
                   fill
-                  className="object-contain"
+                  className="object-cover rounded-tr-[20px] rounded-tl-[20px]"
                   priority
                 />
               </div>

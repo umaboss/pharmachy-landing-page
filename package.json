@@ -4,16 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "next dev -p 4001",
+    "dev": "next dev -p 3099",
     "build": "next build",
-    "start": "next start -p 4001",
+    "start": "next start -p 3099",
     "lint": "next lint",
     "export": "next build && next export",
     "analyze": "ANALYZE=true next build",
     "build:analyze": "npm run build && npx @next/bundle-analyzer",
-    "perf": "next build && next start -p 4001",
+    "perf": "next build && next start -p 3099",
     "build:prod": "NODE_ENV=production next build",
-    "start:prod": "next start -p 4001"
+    "start:prod": "next start -p 3099"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

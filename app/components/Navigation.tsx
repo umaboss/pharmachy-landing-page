@@ -145,7 +145,6 @@ const Navigation = () => {
     { name: "Updates", path: "/product-update" },
     { name: "About Us", path: "/about-us" },
     { name: "Careers", path: "/careers" },
-    { name: "Contact Us", path: "/contact-us" },
   ];
 
   return (
@@ -236,8 +235,16 @@ const Navigation = () => {
               ))}
             </div>
 
-            {/* Login and Quote Buttons - Right side */}
+            {/* Contact Us and Login Buttons - Right side */}
             <div className="hidden lg:flex items-center gap-3 z-10 flex-shrink-0 ml-auto">
+              <Button 
+                size="sm" 
+                variant="outline"
+                asChild
+                className="bg-white border-gray-300 text-gray-700 hover:bg-gradient-to-r hover:from-[#29CDCF] hover:to-[#1947C4] hover:text-white hover:border-transparent whitespace-nowrap rounded-full px-5 font-medium text-sm transition-all duration-300" 
+              >
+                <Link href="/contact-us">Contact Us</Link>
+              </Button>
               <Button 
                 size="sm" 
                 variant="outline"
@@ -246,14 +253,6 @@ const Navigation = () => {
               >
                 <Link href="/login">Login</Link>
               </Button>
-              {/* <Button 
-                size="sm" 
-                variant="outline"
-                onClick={() => setIsQuoteModalOpen(true)}
-                className="bg-white border-gray-300 text-gray-700 hover:bg-gradient-to-r hover:from-[#29CDCF] hover:to-[#1947C4] hover:text-white hover:border-transparent whitespace-nowrap rounded-full px-5 font-medium text-sm transition-all duration-300" 
-              >
-                Get A Free Quote
-              </Button> */}
             </div>
 
             {/* Mobile Menu Button */}           

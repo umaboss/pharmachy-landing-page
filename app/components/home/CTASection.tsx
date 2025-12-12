@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const CTASection = () => {
   return (
-    <section className="relative overflow-hidden py-12 lg:py-16 bg-white">
+    <section className="relative  overflow-hidden py-12 lg:py-16 bg-white">
       {/* Background gradient */}
       <div className="absolute " />
       
@@ -18,13 +18,13 @@ const CTASection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <Button size="lg" className="bg-gradient-primary hover:opacity-90 group" asChild>
+            <Button size="lg" className="bg-gradient-to-r from-[#29CDCF] to-[#1947C4] hover:opacity-90 text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-full font-semibold group" asChild>
               <Link href="/contact-us">
                 Start Free Trial
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" asChild>
+            <Button size="lg" variant="outline" className="bg-white border-2 border-gray-300  hover:text-white hover:bg-gradient-to-r hover:from-[#29CDCF] hover:to-[#1947C4] text-gray-700 rounded-full font-semibold shadow-sm hover:shadow-lg transition-all duration-300" asChild>
               <Link href="/contact-us">Schedule a Demo</Link>
             </Button>
           </div>

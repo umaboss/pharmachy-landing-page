@@ -161,14 +161,13 @@ const FAQSection = () => {
   });
 
   return (
-    <section className="relative overflow-hidden py-12 lg:py-16 bg-white">
+    <section className="relative bg-[rgb(250,251,251)] gradient-to-br from-[#26D2C6]/10 via-white to-[#1C22AA]/10 overflow-hidden py-12 lg:py-16 bg-white">
       <Container className="relative z-10" size="full" padding="none">
         <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         {/* Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-bold md:mb-4 mb-2 text-gray-900">
-            Frequently Asked{" "}
-            <span className="text-[#0C2C8A]">Questions</span>
+            Frequently Asked{" "}Questions
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Everything you need to know about Zapeera. Can't find what you're looking for? 

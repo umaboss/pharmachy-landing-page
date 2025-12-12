@@ -53,10 +53,7 @@ const Testimonials = () => {
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         <div className="text-center max-w-3xl mx-auto  md:mb-16 mb-8 animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Loved by{" "}
-            <span className="text-[#0C2C8A]">
-              Thousands
-            </span>
+            Loved by Thousands
           </h2>
           <p className="text-lg text-muted-foreground">
             See what business owners are saying about Zapeera
@@ -64,8 +61,18 @@ const Testimonials = () => {
         </div>
 
         <div className="relative max-w-4xl mx-auto">
+          {/* Left Navigation Button */}
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={prevTestimonial}
+            className="absolute -left-16 top-1/2 -translate-y-1/2 z-10 rounded-full hidden md:flex bg-white shadow-lg hover:shadow-xl"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </Button>
+
           {/* Testimonial Card */}
-          <Card className="p-8 lg:p-12 border-2 border-border">
+          <Card className="p-8 lg:p-12 border-2 border-border relative">
             <div className="flex flex-col items-center text-center">
               {/* Rating Stars */}
               <div className="flex gap-1 mb-6">
@@ -97,13 +104,23 @@ const Testimonials = () => {
             </div>
           </Card>
 
-          {/* Navigation Buttons */}
+          {/* Right Navigation Button */}
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={nextTestimonial}
+            className="absolute -right-16 top-1/2 -translate-y-1/2 z-10 rounded-full hidden md:flex bg-white shadow-lg hover:shadow-xl"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </Button>
+
+          {/* Dots indicator and mobile buttons */}
           <div className="flex items-center justify-center gap-4 mt-8">
             <Button
               variant="outline"
               size="icon"
               onClick={prevTestimonial}
-              className="rounded-full"
+              className="rounded-full md:hidden"
             >
               <ChevronLeft className="w-5 h-5" />
             </Button>
@@ -128,7 +145,7 @@ const Testimonials = () => {
               variant="outline"
               size="icon"
               onClick={nextTestimonial}
-              className="rounded-full"
+              className="rounded-full md:hidden"
             >
               <ChevronRight className="w-5 h-5" />
             </Button>
