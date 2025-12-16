@@ -122,9 +122,9 @@ export default function Home() {
             <HeroSection />
             <ClientLogos />
             <AboutSection />
-            <FeaturesOverview />
-            <WhyChooseUs />
             <SolutionsSection />
+            <WhyChooseUs />
+            <FeaturesOverview />
             <HowItWorks />
             <PricingSection />
             <Testimonials />

@@ -25,7 +25,7 @@ const AboutSection = () => {
             {/* Right Side - Content */}
             <div className="space-y-6">
               <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 lg:mb-6">
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 lg:mb-6 font-montserrat">
                   About Zapeera
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed">

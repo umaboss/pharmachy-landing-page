@@ -106,7 +106,7 @@ const WhyChooseUs = () => {
         <div className="relative z-10 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           {/* Header */}
           <div className="text-center mb-10 lg:mb-12">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 lg:mb-8">
+            <h2 className="text-[48px] font-bold text-gray-900 mb-6 lg:mb-8 font-montserrat">
               Built for Modern Business
             </h2>
             

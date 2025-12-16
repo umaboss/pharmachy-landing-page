@@ -150,12 +150,12 @@ const Navigation = () => {
   return (
     <>
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent `}
+      className={`fixed bg-white border-b border-gray-200 shadow-lg top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent `}
     >
       <Container size="xl" padding="none">
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-4">
         {/* White pill-shaped navigation bar with soft shadow */}
-        <div className="bg-white rounded-full px-6 lg:px-8 xl:px-10 py-3 h-14 lg:h-14 relative max-w-[2000px] mx-auto shadow-xl">
+        <div className="bg-white rounded- px-6 lg:px-8 xl:px-10 py-3 h-14 lg:h-14 relative max-w-[2000px] mx-auto pb-[20px] ">
           <div className="flex items-center h-full gap-4 lg:gap-6">
             {/* Logo - Pill-shaped button with gradient background */}
             <Link href="/" className="flex items-center group gap-2 z-10 flex-shrink-0">
@@ -237,14 +237,7 @@ const Navigation = () => {
 
             {/* Contact Us and Login Buttons - Right side */}
             <div className="hidden lg:flex items-center gap-3 z-10 flex-shrink-0 ml-auto">
-              <Button 
-                size="sm" 
-                variant="outline"
-                asChild
-                className="bg-white border-gray-300 text-gray-700 hover:bg-gradient-to-r hover:from-[#29CDCF] hover:to-[#1947C4] hover:text-white hover:border-transparent whitespace-nowrap rounded-full px-5 font-medium text-sm transition-all duration-300" 
-              >
-                <Link href="/contact-us">Contact Us</Link>
-              </Button>
+             
               <Button 
                 size="sm" 
                 variant="outline"
@@ -252,6 +245,14 @@ const Navigation = () => {
                 className="bg-white border-gray-300 text-gray-700 hover:bg-gradient-to-r hover:from-[#29CDCF] hover:to-[#1947C4] hover:text-white hover:border-transparent whitespace-nowrap rounded-full px-5 font-medium text-sm transition-all duration-300" 
               >
                 <Link href="/login">Login</Link>
+              </Button>
+              <Button 
+                size="sm" 
+                variant="outline"
+                asChild
+                className=" border-gray-300 text-white bg-gradient-to-r from-[#29CDCF] to-[#1947C4] hover:text-white hover:border-transparent whitespace-nowrap rounded-full px-5 font-medium text-sm transition-all duration-300" 
+              >
+                <Link href="/contact-us">Contact Us</Link>
               </Button>
             </div>
 
